@@ -30,7 +30,7 @@ baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://ali-ibrahim137.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: ""
 github_username:  ali-ibrahim137
-linkedin_username: ali-ibrahim-2ba22a15b/
+linkedin_username: ali-ibrahim-2ba22a15b
 codeforces_username: "C137"
 
 # Build settings
@@ -38,6 +38,11 @@ theme: minima
 plugins:
   - jekyll-feed
 google_analytics: UA-154163127-1
+
+markdown: kramdown
+kramdown:
+   math_engine: mathjax
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.
