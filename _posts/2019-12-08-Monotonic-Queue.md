@@ -88,29 +88,29 @@ The main observation is that we can always get the minimum number by just lookin
 
 The code for the problem will look something like this:
 
-    deque<int>dq;
-    void add(int val){
+    deque<pair<int, int> >dq;
+    void add(int val, int idx){
 	    // adds a number to the back of the queue
-	    while(!dq.empty() && dq.back()>=val){
+	    while(!dq.empty() && dq.back().first>=val){
 	        dq.pop_back();
 	    }
-	    dq.push_back(val);
+	    dq.push_back({val, idx});
     }
-    void del(int val){
+    void del(int idx){
 	    // delets a number from the front of the queue
-	    if(!dq.empty() && dq.front()==val)dq.pop_front();
+	    if(!dq.empty() && dq.front().second==idx)dq.pop_front();
 	}
 	int solve(){
 	    int answer = 0;
 	    // add the first k numbers
 	    for(int i=1;i<=k;i++){
-	        add(a[i]);
+	        add(a[i], i);
 	    }
 	    answer+=dq.front();
         // make a sliding window for the rest n-k numbers
 	    for(int i=k+1;i<=n;i++){
-	        del(a[i-k]);
-	        add(a[i]);
+	        del(i-k);
+	        add(a[i], i);
 	        answer+=dq.front();
 	    }
 	    return answer;
@@ -121,6 +121,9 @@ Monotonic Queue can find the solution for the problem in $$O(n)$$ as for every n
 
 ### Back to the original problem
 We can solve the original problem also using monotonic queue, the idea is we first use monotonic queue to find the answer for each row, this reduces the size of the input array to $$n \times (m-b+1)$$. Next we use monotonic queue to find the answer for each of the resulting $$m-b+1$$ columns. This reduces the size of the array to $$(n-a+1) \times (m-b+1)$$. Every number is the minimum value in its sub-matrices, and we just have to sum up these numbers to find the solution.
+
+### Practice Problems
+ - [Monitor](https://codeforces.com/contest/846/problem/E).
 
 
 # Conclusion
