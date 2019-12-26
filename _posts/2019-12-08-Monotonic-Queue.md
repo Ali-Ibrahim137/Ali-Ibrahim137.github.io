@@ -106,12 +106,12 @@ The code for the problem will look something like this:
 	    for(int i=1;i<=k;i++){
 	        add(a[i], i);
 	    }
-	    answer+=dq.front();
+	    answer+=dq.front().first;
         // make a sliding window for the rest n-k numbers
 	    for(int i=k+1;i<=n;i++){
 	        del(i-k);
 	        add(a[i], i);
-	        answer+=dq.front();
+	        answer+=dq.front().first;
 	    }
 	    return answer;
 	}
