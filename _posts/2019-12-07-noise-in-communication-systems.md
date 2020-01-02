@@ -27,7 +27,7 @@ Thermal noise can be described as a zero-mean ***Gaussian*** random process. Sta
 
 Where $$σ^2$$ is the variance of $$n$$. We obtain the normalized Gaussian density function of a zero-mean process by assuming that $$σ = 1$$. This normalized pdf function is shown in the figure below.
 
-| ![]({{site.url}}/assets/img/1.png)|
+| ![]({{site.url}}/assets/img/Noise in Communication Systems/1.png)|
 |:--:|
 | Normalized $$σ = 1$$ Gaussian probability density function |
 
@@ -57,7 +57,7 @@ As the bandwidth of white noise is infinite, thus its average power is also infi
 
 > $$\int_{-\infty}^{\infty} \! \frac{N_0}{2} \, \mathrm{d}f = \infty$$
 
-| ![]({{site.url}}/assets/img/2.png)|
+| ![]({{site.url}}/assets/img/Noise in Communication Systems/2.png)|
 |:--:|
 | (a) Power spectral density of white noise |
 | (b) Autocorrelation function of white noise |
