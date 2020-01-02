@@ -126,23 +126,9 @@ We can solve the original problem also using monotonic queue, the idea is we fir
  - [Monitor](https://codeforces.com/contest/846/problem/E).
 
 
-## Conclusion
+ # Conclusion
+ In this article we started by giving a motivation problem, discussed different solutions to the problem and started to improve the solution, we ended up by talking about monotonic queue and how to use it to solve the problem.
 
-Through this article we went across different topics, started with introducing the Independent Set term and explaining its meaning, along with the Maximal and Maximum Independent Set terms, next up we moved to talk about Bipartite graphs, and mentioned Kőnig’s theorem, after that we talked about the Minimum Vertex Cover problem and the Maximum Cardinality Bipartite Matching, we mentioned a classical **MCBM** problem and showed two methods of solving it, the Max Flow method, and the Augmenting Paths algorithm. Later we went back to the original **MaxIS** problem, and explained the relation between **MVC** and **MaxIS.** Finally through the prof of Kőnig’s theorem we showed how to find the nodes of the **MVC** and eventually the nodes of the **MaxIS.** You can find the full code for the solution of the problem [here](Link is missing now).
-
-
-### Practice Problems
- - [Heavy Chain Clusterization](https://codeforces.com/gym/100269/problem/H)
- - [Easter Eggs.](https://codeforces.com/gym/101666/problem/E)
- - [No Prime Sum.](https://csacademy.com/contest/archive/task/no-prime-sum/)
+ The code for this problem is available [here](link%20is%20to%20be%20added).
 
  I hope you liked this article, please stay tuned for more.
-
- ### Extra reading + List of acronyms
- - **IS** [Independent set.](https://en.wikipedia.org/wiki/Independent_set_%28graph_theory%29)
- - **MIS** [Maximal independent set.](https://en.wikipedia.org/wiki/Maximal_independent_set)
- - **MaxIS** [Maximum independent set.](https://en.wikipedia.org/wiki/Independent_set_(graph_theory)#Finding_maximum_independent_sets)
- - [**Kőnig's theorem.**](https://en.wikipedia.org/wiki/K%C5%91nig%27s_theorem_(graph_theory))
- - **MVC** [Minimum Vertex Cover.](https://en.wikipedia.org/wiki/Vertex_cover)
- - **MCBM** [Maximum Cardinality Bipartite Matching](**Maximum Cardinality Bipartite Matching**)
- - [**Max Flow.**](https://en.wikipedia.org/wiki/Maximum_flow_problem)
