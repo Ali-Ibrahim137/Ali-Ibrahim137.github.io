@@ -129,6 +129,6 @@ We can solve the original problem also using monotonic queue, the idea is we fir
 # Conclusion
 In this article we started by giving a motivation problem, discussed different solutions to the problem and started to improve the solution, we ended up by talking about monotonic queue and how to use it to solve the problem.
 
-The code for this problem is available [here](link%20is%20to%20be%20added).
+The code for this problem is available [here](https://github.com/Ali-Ibrahim137/Competitive-Programming/blob/master/Articles/monotonic%20queue.cpp).
 
 I hope you liked this article, please stay tuned for more.
