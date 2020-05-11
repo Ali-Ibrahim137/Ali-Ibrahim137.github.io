@@ -10,14 +10,14 @@ Autocomplete is the feature when an application predicts the complete word, afte
 - Search engines, Google search engine suggests to you an autocomplete feature when you type some text in the search bar, usually sorted by most trends.
 - Emails, as you start writing some **prefix** of the Email address you will get a list of suggestions.
 - Social media, like facebook, linkedin, instagram...
-- In source code editors, actually I am using Atom wright now and I have used autocomplete for at least 10 times just in the first small part of this article.
+- In source code editors, actually I am using Atom right now and I have used autocomplete for at least 10 times just in the first small part of this article.
 
 | ![]({{site.url}}/assets/img/Autocomplete/1.png)|
 |:--:|
 | Figure 1: Autocomplete with Google Search Engine |
 
 
-Autocomplete can be a powerful tool to minimize the number of keystrokes needed to type a word, also in some cases like search engines it helps you to get good suggestions about what you are looking at, however implementing autocomplete is not an easy task, you should know the right data structures to use to archive the best space and time complexity. In this article I will be talking about two different implementations using ***Trie*** and ***Ternary Search Trees*** data structures.
+Autocomplete can be a powerful tool to minimize the number of keystrokes needed to type a word, also in some cases like search engines it helps you to get good suggestions about what you are looking for, however implementing autocomplete is not an easy task, you should know the right data structures to use to archive the best space and time complexity. In this article I will be talking about two different implementations using ***Trie*** and ***Ternary Search Trees*** data structures.
 
 ### Trie
 Trie is a tree-like data structure used to store strings, it supports insert, search and delete operations in $$O(n)$$ time. Each node of the trie contains an array of pointers for every character of the alphabet, in addition to a Boolean flag to indicate the end of string. The basic TrieNode implementation in C++ looks like:
