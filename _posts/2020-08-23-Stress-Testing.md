@@ -1,11 +1,12 @@
 ---
 layout: post
 title:  "Stress Testing"
-date:   2020-08-21
-categories: Competitive Programming
+date:   2020-08-23
+categories: Competitive programming
 ---
-## Introduction
+I decided to write this article after watching the last screencast made by [Errichto](https://codeforces.com/profile/Errichto). To be more precise when he started making stress testing to find counter-test you can check that [here](https://www.youtube.com/watch?v=uABbBGtEWks&feature=youtu.be&t=1433). Errichto has a full video called [How to test your solution in Competitive Programming, on Linux?](https://www.youtube.com/watch?v=JXTVOyQpSGM) I highly recommend you to check it, basically this article is the same but I am extending it to stress test solutions with multiple answers using a written checker, so let's jump in.
 
+## Introduction
 You can use stress testing in competitive programming to test your solution against many randomly generated tests in order to find a "small" test case that your solution produces wrong answer for this case, and hopefully this can help you to find the bug in your code of the mistake in your approach and eventually helping you solve the problem.
 
 ## Before starting
