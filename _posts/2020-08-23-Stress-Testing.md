@@ -147,7 +147,7 @@ for((i = 1; ; ++i)); do
     ./gen $i > input_file
     ./code < input_file > myAnswer
     ./brute < input_file > correctAnswer
-    diff -w myAnswer correctAnswer > /dev/null || break
+    diff -Z myAnswer correctAnswer > /dev/null || break
     echo "Passed test: "  $i
 done
 echo "WA on the following test:"
@@ -166,7 +166,7 @@ YES
 Correct answer is:
 NO
 ~~~~~
-Please note that the `-w` after `diff` in line 9 means ignore all white spaces while comparing the files, please be careful that the online judge you are using ignores them too, at some sites like **UVA** one white space will cause you WA or PE. You can read more about other arguments with the function [here.](https://man7.org/linux/man-pages/man1/diff.1.html)
+Please note that the `-Z` after `diff` in line 9 means ignore white space at line end while comparing the files, please be careful that the online judge you are using ignores them too, at some sites like **UVA** one white space will cause you WA or PE. You can read more about other arguments with the function [here.](https://man7.org/linux/man-pages/man1/diff.1.html)
 
 ## Use checker
 In some problems more than one answer is accepted so you can't use the `diff` function, Let's take this [problem](https://codeforces.com/contest/4/problem/A) as an example. In this problem You're given an array $$a$$ of length $$2n$$. You have to find if it's possible to reorder it in such way so that the sum of the first $$n$$ elements isn't equal to the sum of the last $$n$$ elements. Now I have chosen one solution that fails on test 32 to stress test it, I have chosen this solution randomly so I am sorry if this was your solution. The code is:
