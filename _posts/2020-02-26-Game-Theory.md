@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Game Theory part 1"
+title:  "Game Theory"
 date:   2020-02-26
 categories: Competitive programming
 ---
@@ -69,7 +69,7 @@ $$ x_2 = 10_{10} = 1010_2$$
 
 $$ x_3 = 13_{10} = 1101_2$$
 
-$$ nim-sum = 11_{10} = 1011_2 \ne 0 $$, So this is a N-position.
+$$ nim$$ - $$sum = 11_{10} = 1011_2 \ne 0 $$, So this is a N-position.
 
 $$ x_1 = 10_{10} = 1010_2$$
 
@@ -77,7 +77,7 @@ $$ x_2 = 10_{10} = 1110_2$$
 
 $$ x_3 = \,\,\,4_{10} = 0100_2$$
 
-$$ nim-sum = 0_{10} = 0000_2 = 0 $$, So this is a P-position.
+$$ nim$$ - $$sum = 0_{10} = 0000_2 = 0 $$, So this is a P-position.
 
 
 ### Proof
@@ -175,6 +175,6 @@ To solve this problem we will use the SG-Theorem, let's first solve the problem 
 According to SG-Theorem the nim-sum of this game is equal to $$2\oplus 0 \oplus 3 = 1 \neq 0$$ so this is a winning position for the first player, the playing strategy is same as the nim-game, In the example above the first move in the optimal strategy would be to move the nawl is cell $$(2, 1)$$ to cell $$(3, 1)$$ as this makes the total nim-sum equal to zero, which is a ***P*** position.
 
 ## Conclusion
-In this article I went through lots of topics related to game theory, first I started by defining combinatorial games, and gave a simple subtraction game as an example explaining how to find ***P*** and ***N*** positions, Next on I introduced Nim-games and gave a proof how Bouton's Theorem can be used to play the game. Later I showed how to represent games on directed graphs, and talked about Sprague-Grundy Function, finally I have mentioned how to use SG-Theorem to play games on graphs defined by the sum of many combinatorial games and gave a brief example about the theorem. Sprague-Grundy Theorem can be used to solve many problems related to competitive programming, in this article I just wanted to show and explain lots of concepts, in a next article I will focus more on explaining different problems and how to solve them.
+In this article I went through lots of topics related to game theory, first I started by defining combinatorial games, and gave a simple subtraction game as an example explaining how to find ***P*** and ***N*** positions, Next on I introduced Nim-games and gave a proof how Bouton's Theorem can be used to play the game. Later I showed how to represent games on directed graphs, and talked about Sprague-Grundy Function, finally I have mentioned how to use SG-Theorem to play games on graphs defined by the sum of many combinatorial games and gave a brief example about the theorem. Sprague-Grundy Theorem can be used to solve many problems related to competitive programming, in this article I just wanted to show and explain lots of concepts, maybe in a next article I will focus more on explaining different problems and how to solve them.
 
 I hope you liked this article, please stay tuned for more.
