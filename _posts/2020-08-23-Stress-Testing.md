@@ -139,6 +139,7 @@ A Bash script is a plain text file with the extension **.sh** which contains a s
 
 The script file will look like:
 {% highlight bash linenos %}
+set -e
 g++ code.cpp -o code
 g++ gen.cpp -o gen
 g++ brute.cpp -o brute
@@ -290,6 +291,7 @@ int main(int argc, char * argv[]){
 ---
 Finally the bash script will be:
 {% highlight bash linenos %}
+set -e
 g++ code.cpp -o code
 g++ gen.cpp -o gen
 g++ brute.cpp -o brute
@@ -299,22 +301,16 @@ for((i = 1; ; ++i)); do
     ./code < input_file > myAnswer
     ./brute < input_file > correctAnswer
     ./checker > checker_log
-    ret_code=$?
-    if [ $ret_code -ne 0 ];then
-           break
-    fi
     echo "Passed test: "  $i
 done
-echo "WA on the following test:"
-cat input_file
-echo "Your answer is:"
-cat myAnswer
-echo "Correct answer is:"
-cat correctAnswer
-echo "Checker message: "
-cat checker_log
 {% endhighlight %}
 ---
+Here the script will keep running until the returned value from the checker is equal to $$0$$ any nonzero value will make the script stop, this even includes compilition error while compiling the programs, to find the test case, your WA and the correct answer you can use `cat` command:
+~~~~~
+cat input_file
+cat myAnswer
+cat correctAnswer
+~~~~~
 After running the script, the code will pass some tests eventually failing with this:
 ~~~~~
 WA on the following test:
