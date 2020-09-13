@@ -4,7 +4,7 @@
 
 layout: page
 title: AtCoder unofficial Editorials
-permalink: /atcoder
+permalink: /AtCoder
 ---
 
 <h2 class="post-list-heading">{{ page.list_title}}</h2>
