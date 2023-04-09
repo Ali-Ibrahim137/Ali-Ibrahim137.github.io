@@ -41,9 +41,7 @@ A graph is called to be Bipartite if we can split the set of nodes $$V$$ into tw
 
 In 1916 Hungarian mathematician [Dénes Kőnig](https://en.wikipedia.org/wiki/D%C3%A9nes_K%C5%91nig) published his works about the relation between the **Minimum Vertex Cover (MVC)** problem and the **Maximum Cardinality Bipartite Matching (MCBM)** problem in bipartite graphs. The theorem is called **Kőnig's line coloring theorem** and it states:
 
-`
-In any bipartite graph, the number of edges in a Maximum matching equals the number of vertices in a minimum vertex cover.
-`
+> In any bipartite graph, the number of edges in a Maximum matching equals the number of vertices in a minimum vertex cover.
 
 We have presented many new terms that need to be explained, and we should also explain the relation between these new terms and the **MaxIS** term.
 
@@ -143,9 +141,7 @@ $$\\$$
 ## Back to the original problem
 We have gone a little bit away from the original problem, started by the **MaxIS** problem and now we went through lot of different topics. Actually you cant really understand how to find the **MaxIS** in a bipartite graph without going through all these steps. There are two extra things we should mention before finishing this article. First thing states that:
 
-`
-The complement of a minimum vertex cover in any graph is the maximum independent set.
-`
+> The complement of a minimum vertex cover in any graph is the maximum independent set.
 
 In conclusion we can say, in bipartite graphs solving the **NP-Hard MaxIS** can be reduced to solving **NP-Hard MVC** problem, this also can also be reduced to solving the **polynomial MCBM** problem.
 
