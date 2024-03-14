@@ -37,7 +37,7 @@ codeforces_username: "C137"
 theme: minima
 plugins:
   - jekyll-feed
-google_analytics: G-C1HS3KK3Q2
+google_analytics: UA-154163127-1
 
 markdown: kramdown
 kramdown:
