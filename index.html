@@ -14,13 +14,23 @@ layout: page
         {%- for post in site.posts -%}
           <div class="post-homepage-preview" data-title="{{ post.title | downcase }}">
             {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-            <div class="post-homepage-date">{{ post.date | date: date_format }}</div>
 
             <h3 class="post-homepage-title">
               <a class="post-homepage-link" href="{{ post.url | relative_url }}">
                 {{ post.title | escape }}
               </a>
             </h3>
+            <div class="post-homepage-date">{{ post.date | date: date_format }}</div>
+
+            {%- if post.categories -%}
+              <div class="post-categories" style="margin-left: 0;">
+                {%- for category in post.categories -%}
+                  <a href="{{ '/categories/' | append: category | relative_url }}" class="category-badge">
+                    {{ category }}
+                  </a>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
 
             <div class="post-homepage-content">
               <div class="post-homepage-image">
