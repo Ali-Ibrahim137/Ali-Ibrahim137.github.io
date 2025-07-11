@@ -1,0 +1,25 @@
+---
+layout: default
+---
+
+{% include head.html %}
+<style>
+  .post-content, .post-title, .post-meta, .post-date {
+    margin-left: 30rem;
+    margin-right: 30rem;
+  }
+</style>
+
+<article class="post h-entry">
+  <header>
+    <h1 class="post-title p-name">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%b %-d, %Y" }}
+      </time>
+    </p>
+  </header>
+  <div class="post-content e-content">
+    {{ content }}
+  </div>
+</article>
