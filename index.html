@@ -6,7 +6,7 @@ layout: page
   <div class="content-wrapper">
     <main class="homepage-main">
       <ul class="post-list">
-        {%- for post in site.posts -%}
+        {%- for post in paginator.posts -%}
           <li class="post-homepage-preview">
             {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
             <div class="post-homepage-date">{{ post.date | date: date_format }}</div>
@@ -31,10 +31,34 @@ layout: page
           </li>
         {%- endfor -%}
       </ul>
+      <div class="pagination">
+        {% assign first_page_url = '/' %}
+        {% assign last_page_url = site.paginate_path | replace: ':num', paginator.total_pages | relative_url %}
+        {% if paginator.page != 1 %}
+          <a href="{{ first_page_url }}">First</a>
+        {% endif %}
+        {% if paginator.previous_page %}
+          <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; Previous</a>
+        {% endif %}
+        {% for page in (1..paginator.total_pages) %}
+          {% if page == paginator.page %}
+            <span class="page-number current">{{ page }}</span>
+          {% elsif page == 1 %}
+            <a href="{{ '/' | relative_url }}">1</a>
+          {% else %}
+            <a href="{{ site.paginate_path | replace: ':num', page | relative_url }}">{{ page }}</a>
+          {% endif %}
+        {% endfor %}
+        {% if paginator.next_page %}
+          <a href="{{ paginator.next_page_path | relative_url }}">Next &raquo;</a>
+        {% endif %}
+        {% if paginator.page != paginator.total_pages %}
+          <a href="{{ last_page_url }}">Last</a>
+        {% endif %}
+      </div>
     </main>
-
     <aside class="homepage-sidebar">
       {% include archive-tree.html %}
     </aside>
   </div>
-</div>
+</div> 
