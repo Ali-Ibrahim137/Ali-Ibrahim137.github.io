@@ -5,9 +5,14 @@ layout: page
 <div class="page-container">
   <div class="content-wrapper">
     <main class="homepage-main">
-      <ul class="post-list">
-        {%- for post in paginator.posts -%}
-          <li class="post-homepage-preview">
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search posts by title..." class="search-input">
+      </div>
+
+      <!-- Hidden container with all posts -->
+      <div id="all-posts-container" style="display: none;">
+        {%- for post in site.posts -%}
+          <div class="post-homepage-preview" data-title="{{ post.title | downcase }}">
             {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
             <div class="post-homepage-date">{{ post.date | date: date_format }}</div>
 
@@ -28,10 +33,40 @@ layout: page
             </div>
 
             <hr class="post-homepage-divider">
-          </li>
+          </div>
         {%- endfor -%}
-      </ul>
-      <div class="pagination">
+      </div>
+
+      <!-- Visible posts container -->
+      <div id="posts-container">
+        {%- for post in paginator.posts -%}
+          <div class="post-homepage-preview" data-title="{{ post.title | downcase }}">
+            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+            <div class="post-homepage-date">{{ post.date | date: date_format }}</div>
+
+            <h3 class="post-homepage-title">
+              <a class="post-homepage-link" href="{{ post.url | relative_url }}">
+                {{ post.title | escape }}
+              </a>
+            </h3>
+
+            <div class="post-homepage-content">
+              <div class="post-homepage-image">
+                <img src="{{ site.url }}{{ post.previewImage }}" alt="Preview" />
+              </div>
+              <div class="post-homepage-excerpt">
+                {{ post.excerpt }}
+                <a class="post-homepage-link" href="{{ post.url | relative_url }}">Read more →</a>
+              </div>
+            </div>
+
+            <hr class="post-homepage-divider">
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <!-- Pagination container -->
+      <div class="pagination" id="pagination-container">
         {% assign first_page_url = '/' %}
         {% assign last_page_url = site.paginate_path | replace: ':num', paginator.total_pages | relative_url %}
         {% if paginator.page != 1 %}
@@ -61,4 +96,6 @@ layout: page
       {% include archive-tree.html %}
     </aside>
   </div>
-</div> 
+</div>
+
+<script src="{{ '/assets/js/search.js' | relative_url }}"></script>
