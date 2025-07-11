@@ -38,6 +38,7 @@ excerpt_separator: <!--more-->
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-paginate
 google_analytics: UA-154163127-1
 
 markdown: kramdown
@@ -73,3 +74,6 @@ include:
 
 minima:
   include_custom_styles: true
+
+paginate: 5
+paginate_path: "/p/:num/"
