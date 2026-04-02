@@ -2,13 +2,13 @@
 layout: post
 title:  "Noise in Communication Systems"
 date:   2019-12-07
-categories: digital communications
+categories: digital-communications
+previewImage: /assets/img/Maximum Independent Set in Bipartite Graphs/1.png
 ---
 
 The term noise refers to ***unwanted*** electrical signal in electrical systems. This unwanted signal masks the information signal, limiting the transmission rate and affecting the receivers ability to make the correct symbol decision.
 
 In communication systems noise arises due to different sources, these sources can be classified in two categories:
-
  - Natural noise:
 	 - Atmospheric noise.
 	 - Noise from the sun.
@@ -16,6 +16,7 @@ In communication systems noise arises due to different sources, these sources ca
  - Man-made noise:
 	 - Ignition noise.
 	 - Radiating electromagnetic signals.
+<!--more-->
 
 Engineers must try their best to eliminate noise, or at least reduce its affects. This can be achieved through filtering, shielding, good choice of modulation and optimal selection of receiver's site, in remote dessert locations far from man-made noise sources.
 

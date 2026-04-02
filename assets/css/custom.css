@@ -230,7 +230,7 @@ body {
   color: #fff;
 }
 
-/* Post page specific styles */
+/* Only apply large margins to post pages */
 .post .post-content,
 .post .post-title,
 .post .post-meta,

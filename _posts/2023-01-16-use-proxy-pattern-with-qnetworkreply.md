@@ -2,13 +2,14 @@
 layout: post
 title:  "How to use Proxy pattern with QNetworkReply?"
 date:   2023-01-16
-categories: Qt
+categories: qt design-patterens
+previewImage: /assets/img/Maximum Independent Set in Bipartite Graphs/1.png
 ---
 ## Background
 In a previous project that I worked on, we had to connect to backend API using Qt framework in order to download some files and display some content of these files, this thing might look easily done using **QNetworkAccessManager** and **QNetworkReply**. But we had other things to consider:
 - Size of the downloaded files was large.
 - No file should be stored in the device running the application.
-
+<!--more-->
 # Backend
 I will be using **Flask** as a dummy backend, I want to keep things simple by just adding tow routes, `/api/files` to get a list of files to download, and `/api/download/file/<variant>` to download a file, the `dummy_backend.py` file will be:
 

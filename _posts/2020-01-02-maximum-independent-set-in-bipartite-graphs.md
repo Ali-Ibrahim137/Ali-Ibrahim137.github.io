@@ -2,7 +2,8 @@
 layout: post
 title:  "Maximum Independent Set in Bipartite Graphs"
 date:   2020-01-02
-categories: Competitive Programming
+categories: competitive-programming
+previewImage: /assets/img/Maximum Independent Set in Bipartite Graphs/1.png
 ---
 # Introduction
 
@@ -12,6 +13,8 @@ The title contains a lot of terms that should be explained separately before we 
 For any two nodes $$u, v \in U$$ nodes $$u, v$$ are not adjacent ( There is no direct edge between nodes $$u$$ and $$v$$ ).
  - ***Maximal Independent Set (MIS) :*** An independent set is maximal if no node can be added to it without violating the independence condition.
  - ***Maximum Independent Set (MaxIS) :*** An independent set of maximum cardinality.
+
+<!--more-->
 
  | ![]({{site.url}}/assets/img/Maximum Independent Set in Bipartite Graphs/1.png)|
  |:--:|

@@ -2,17 +2,20 @@
 layout: post
 title:  "Polygon.CodeForces Tutorial"
 date:   2020-09-27
-categories: Competitive Programming
+categories: competitive-programming
+shortUrl: qwerty
+previewImage: /assets/img/Maximum Independent Set in Bipartite Graphs/1.png
+permalink: /2020/09/27/qwerty.html
+previewImage: /assets/img/Maximum Independent Set in Bipartite Graphs/1.png
 ---
 # What is Polygon
-
 According to Polygon itself,  The mission of Polygon is to provide platform for creation of programming contest problems. Polygon supports the whole development cycle:
-
 - Problem statement writing.
 - Test data preparing (generators supported).
 - Model solutions (including correct and wittingly incorrect).
 - Judging.
 - Automatic validation.
+<!--more-->
 
 Polygon uses `testlib.h` in problem creation, This library is a standard solution in a professional community of problemsetters in Russia and several other countries. Many contests are prepared by using `testlib.h`, All-Russian school olympiads, ACM-ICPC regional contests, all Codeforces round and many others. You can read more about testlib from [Codeforces blogs.](https://codeforces.com/testlib)
 
