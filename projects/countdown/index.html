@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown to 21 August 2026 17:00</title>
+    <style>
+      :root {
+        --bg1: #0f172a;
+        --bg2: #1e293b;
+        --card: rgba(255, 255, 255, 0.08);
+        --border: rgba(255, 255, 255, 0.12);
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+        --accent: #38bdf8;
+        --accent-soft: rgba(56, 189, 248, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Inter, Arial, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top, #1d4ed8 0%, transparent 35%),
+          linear-gradient(135deg, var(--bg1), var(--bg2));
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .container {
+        width: min(1120px, 100%);
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        backdrop-filter: blur(14px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        padding: 32px;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 1.1;
+      }
+
+      h2 {
+        margin: 0 0 14px;
+        font-size: clamp(1.2rem, 2.6vw, 1.7rem);
+      }
+
+      .subtitle {
+        margin: 0 0 28px;
+        color: var(--muted);
+        font-size: 1rem;
+      }
+
+      .countdown {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 16px;
+      }
+
+      .unit {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 22px 16px;
+        text-align: center;
+      }
+
+      .value {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        letter-spacing: -0.04em;
+      }
+
+      .label {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .totals {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+        margin-top: 20px;
+      }
+
+      .total-card {
+        background: var(--accent-soft);
+        border: 1px solid rgba(56, 189, 248, 0.22);
+        border-radius: 20px;
+        padding: 20px;
+      }
+
+      .total-title {
+        color: var(--muted);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 8px;
+      }
+
+      .total-value {
+        font-size: clamp(1.6rem, 4vw, 2.5rem);
+        font-weight: 700;
+      }
+
+      .section {
+        margin-top: 26px;
+      }
+
+      .section-note {
+        margin: 0 0 16px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 720px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      th,
+      td {
+        padding: 14px 16px;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      th {
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--muted);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      td:first-child,
+      th:first-child {
+        text-align: left;
+      }
+
+      tbody tr:hover {
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      tfoot td {
+        font-weight: 700;
+        background: rgba(56, 189, 248, 0.08);
+      }
+
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .legend span {
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .ended {
+        margin-top: 20px;
+        color: #7dd3fc;
+        font-weight: 600;
+      }
+
+      footer {
+        margin-top: 18px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 640px) {
+        .card {
+          padding: 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="card">
+        <h1>Countdown</h1>
+        <p class="subtitle">
+          Time remaining until <strong>21 August 2026, 17:00</strong>
+        </p>
+
+        <div class="countdown">
+          <div class="unit">
+            <div id="months" class="value">0</div>
+            <div class="label">Months</div>
+          </div>
+          <div class="unit">
+            <div id="days" class="value">0</div>
+            <div class="label">Days</div>
+          </div>
+          <div class="unit">
+            <div id="hours" class="value">0</div>
+            <div class="label">Hours</div>
+          </div>
+          <div class="unit">
+            <div id="minutes" class="value">0</div>
+            <div class="label">Minutes</div>
+          </div>
+          <div class="unit">
+            <div id="seconds" class="value">0</div>
+            <div class="label">Seconds</div>
+          </div>
+        </div>
+
+        <div class="totals">
+          <div class="total-card">
+            <div class="total-title">Total days remaining</div>
+            <div id="totalDays" class="total-value">0</div>
+          </div>
+          <div class="total-card">
+            <div class="total-title">Target date</div>
+            <div id="targetText" class="total-value" style="font-size: 1.3rem; line-height: 1.4;">
+              21 Aug 2026, 17:00
+            </div>
+          </div>
+        </div>
+
+        <section class="section">
+          <h2>Remaining day breakdown</h2>
+          <p class="section-note">
+            The table below shows only the remaining months up to the target date. Counts update automatically every second,
+            and a day is removed from its category exactly at <strong>17:00 Hamburg time</strong>.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Month</th>
+                  <th>Working days</th>
+                  <th>Public holiday</th>
+                  <th>Vacation</th>
+                  <th>Weekends</th>
+                  <th>Sum</th>
+                </tr>
+              </thead>
+              <tbody id="breakdownBody"></tbody>
+              <tfoot>
+                <tr>
+                  <td>Sum</td>
+                  <td id="sumWorking">0</td>
+                  <td id="sumHoliday">0</td>
+                  <td id="sumVacation">0</td>
+                  <td id="sumWeekend">0</td>
+                  <td id="sumAll">0</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+
+          <div class="legend">
+            <span>Public holidays: Hamburg, Germany</span>
+            <span>Vacation: 7 April, 4–13 May, 15 May, 8–9 Jun, 6–7 Jul</span>
+            <span>Priority: holiday → weekend → vacation → working day</span>
+          </div>
+        </section>
+
+        <div id="ended" class="ended" hidden>The countdown has ended.</div>
+      </section>
+    </main>
+
+    <script>
+      const HAMBURG_TIMEZONE = "Europe/Berlin";
+      const targetDate = new Date("2026-08-21T17:00:00+02:00");
+      const targetDateParts = { year: 2026, month: 8, day: 21 };
+
+      const publicHolidays = new Set([
+        "2026-04-03",
+        "2026-04-06",
+        "2026-05-01",
+        "2026-05-14",
+        "2026-05-25",
+      ]);
+
+      const vacationDays = new Set();
+
+      vacationDays.add("2026-04-07");
+      addDateRangeToSet(vacationDays, 2026, 5, 4, 2026, 5, 13);
+      vacationDays.add("2026-05-15");
+      addDateRangeToSet(vacationDays, 2026, 6, 8, 2026, 6, 9);
+      addDateRangeToSet(vacationDays, 2026, 7, 6, 2026, 7, 7);
+
+      const monthsEl = document.getElementById("months");
+      const daysEl = document.getElementById("days");
+      const hoursEl = document.getElementById("hours");
+      const minutesEl = document.getElementById("minutes");
+      const secondsEl = document.getElementById("seconds");
+      const totalDaysEl = document.getElementById("totalDays");
+      const endedEl = document.getElementById("ended");
+      const breakdownBodyEl = document.getElementById("breakdownBody");
+      const sumWorkingEl = document.getElementById("sumWorking");
+      const sumHolidayEl = document.getElementById("sumHoliday");
+      const sumVacationEl = document.getElementById("sumVacation");
+      const sumWeekendEl = document.getElementById("sumWeekend");
+      const sumAllEl = document.getElementById("sumAll");
+
+      const berlinFormatter = new Intl.DateTimeFormat("en-CA", {
+        timeZone: HAMBURG_TIMEZONE,
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hourCycle: "h23",
+      });
+
+      function addDateRangeToSet(set, startYear, startMonth, startDay, endYear, endMonth, endDay) {
+        let cursor = new Date(Date.UTC(startYear, startMonth - 1, startDay));
+        const end = new Date(Date.UTC(endYear, endMonth - 1, endDay));
+
+        while (cursor <= end) {
+          const y = cursor.getUTCFullYear();
+          const m = String(cursor.getUTCMonth() + 1).padStart(2, "0");
+          const d = String(cursor.getUTCDate()).padStart(2, "0");
+          set.add(`${y}-${m}-${d}`);
+          cursor.setUTCDate(cursor.getUTCDate() + 1);
+        }
+      }
+
+      function getBerlinNowParts() {
+        const parts = berlinFormatter.formatToParts(new Date());
+        const get = (type) => parts.find((part) => part.type === type)?.value || "00";
+
+        return {
+          year: Number(get("year")),
+          month: Number(get("month")),
+          day: Number(get("day")),
+          hour: Number(get("hour")),
+          minute: Number(get("minute")),
+          second: Number(get("second")),
+        };
+      }
+
+      function compareDateParts(a, b) {
+        if (a.year !== b.year) return a.year - b.year;
+        if (a.month !== b.month) return a.month - b.month;
+        return a.day - b.day;
+      }
+
+      function nextDateParts(parts) {
+        const date = new Date(Date.UTC(parts.year, parts.month - 1, parts.day));
+        date.setUTCDate(date.getUTCDate() + 1);
+        return {
+          year: date.getUTCFullYear(),
+          month: date.getUTCMonth() + 1,
+          day: date.getUTCDate(),
+        };
+      }
+
+      function toIsoDate(parts) {
+        return `${parts.year}-${String(parts.month).padStart(2, "0")}-${String(parts.day).padStart(2, "0")}`;
+      }
+
+      function getMonthLabel(month) {
+        return ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][month - 1];
+      }
+
+      function getWeekday(parts) {
+        return new Date(Date.UTC(parts.year, parts.month - 1, parts.day)).getUTCDay();
+      }
+
+      function getDayType(parts) {
+        const iso = toIsoDate(parts);
+        const weekday = getWeekday(parts);
+
+        if (publicHolidays.has(iso)) return "holiday";
+        if (weekday === 0 || weekday === 6) return "weekend";
+        if (vacationDays.has(iso)) return "vacation";
+        return "working";
+      }
+
+      function getBreakdownStartDate() {
+        const now = getBerlinNowParts();
+        const today = { year: now.year, month: now.month, day: now.day };
+        return now.hour >= 17 ? nextDateParts(today) : today;
+      }
+
+      function buildRemainingBreakdown() {
+        const start = getBreakdownStartDate();
+
+        if (compareDateParts(start, targetDateParts) > 0) {
+          return { rows: [], totals: { working: 0, holiday: 0, vacation: 0, weekend: 0, sum: 0 } };
+        }
+
+        const monthMap = new Map();
+        const totals = { working: 0, holiday: 0, vacation: 0, weekend: 0, sum: 0 };
+
+        let cursor = { ...start };
+        while (compareDateParts(cursor, targetDateParts) <= 0) {
+          const key = `${cursor.year}-${String(cursor.month).padStart(2, "0")}`;
+          if (!monthMap.has(key)) {
+            monthMap.set(key, {
+              label: getMonthLabel(cursor.month),
+              working: 0,
+              holiday: 0,
+              vacation: 0,
+              weekend: 0,
+              sum: 0,
+            });
+          }
+
+          const row = monthMap.get(key);
+          const type = getDayType(cursor);
+          row[type] += 1;
+          row.sum += 1;
+          totals[type] += 1;
+          totals.sum += 1;
+
+          cursor = nextDateParts(cursor);
+        }
+
+        return { rows: Array.from(monthMap.values()), totals };
+      }
+
+      function renderBreakdownTable() {
+        const { rows, totals } = buildRemainingBreakdown();
+
+        breakdownBodyEl.innerHTML = "";
+
+        for (const row of rows) {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${row.label}</td>
+            <td>${row.working}</td>
+            <td>${row.holiday}</td>
+            <td>${row.vacation}</td>
+            <td>${row.weekend}</td>
+            <td>${row.sum}</td>
+          `;
+          breakdownBodyEl.appendChild(tr);
+        }
+
+        sumWorkingEl.textContent = String(totals.working);
+        sumHolidayEl.textContent = String(totals.holiday);
+        sumVacationEl.textContent = String(totals.vacation);
+        sumWeekendEl.textContent = String(totals.weekend);
+        sumAllEl.textContent = String(totals.sum);
+      }
+
+      function daysInMonth(year, monthIndex) {
+        return new Date(year, monthIndex + 1, 0).getDate();
+      }
+
+      function addMonths(date, months) {
+        const d = new Date(date);
+        const originalDay = d.getDate();
+        d.setDate(1);
+        d.setMonth(d.getMonth() + months);
+        d.setDate(Math.min(originalDay, daysInMonth(d.getFullYear(), d.getMonth())));
+        return d;
+      }
+
+      function getCalendarDiff(start, end) {
+        let cursor = new Date(start);
+        let months = 0;
+
+        while (true) {
+          const next = addMonths(cursor, 1);
+          if (next <= end) {
+            cursor = next;
+            months += 1;
+          } else {
+            break;
+          }
+        }
+
+        let remainingMs = end - cursor;
+
+        const dayMs = 24 * 60 * 60 * 1000;
+        const hourMs = 60 * 60 * 1000;
+        const minuteMs = 60 * 1000;
+        const secondMs = 1000;
+
+        const days = Math.floor(remainingMs / dayMs);
+        remainingMs -= days * dayMs;
+
+        const hours = Math.floor(remainingMs / hourMs);
+        remainingMs -= hours * hourMs;
+
+        const minutes = Math.floor(remainingMs / minuteMs);
+        remainingMs -= minutes * minuteMs;
+
+        const seconds = Math.floor(remainingMs / secondMs);
+
+        return { months, days, hours, minutes, seconds };
+      }
+
+      function updateCountdown() {
+        const now = new Date();
+        const diffMs = targetDate - now;
+
+        if (diffMs <= 0) {
+          monthsEl.textContent = "0";
+          daysEl.textContent = "0";
+          hoursEl.textContent = "0";
+          minutesEl.textContent = "0";
+          secondsEl.textContent = "0";
+          totalDaysEl.textContent = "0";
+          renderBreakdownTable();
+          endedEl.hidden = false;
+          return;
+        }
+
+        const diff = getCalendarDiff(now, targetDate);
+        const totalDays = (diffMs / (1000 * 60 * 60 * 24)).toFixed(2);
+
+        monthsEl.textContent = String(diff.months);
+        daysEl.textContent = String(diff.days).padStart(2, "0");
+        hoursEl.textContent = String(diff.hours).padStart(2, "0");
+        minutesEl.textContent = String(diff.minutes).padStart(2, "0");
+        secondsEl.textContent = String(diff.seconds).padStart(2, "0");
+        totalDaysEl.textContent = totalDays;
+        renderBreakdownTable();
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    </script>
+  </body>
+</html>
