@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Countdown to 03 September 2026 17:00</title>
+    <title>Countdown to 14 August 2026 17:00</title>
     <style>
       :root {
         --bg1: #0f172a;
@@ -211,7 +211,7 @@
       <section class="card">
         <h1>Countdown</h1>
         <p class="subtitle">
-          Time remaining until <strong>03 September 2026, 17:00</strong>
+          Time remaining until <strong>14 August 2026, 17:00</strong>
         </p>
 
         <div class="countdown">
@@ -245,7 +245,7 @@
           <div class="total-card">
             <div class="total-title">Target date</div>
             <div id="targetText" class="total-value" style="font-size: 1.3rem; line-height: 1.4;">
-              03 Sep 2026, 17:00
+              14 Aug 2026, 17:00
             </div>
           </div>
         </div>
@@ -285,7 +285,7 @@
 
           <div class="legend">
             <span>Public holidays: Hamburg, Germany</span>
-            <span>Vacation: 7 April, 15 May, 8 Jun, 6 Jul</span>
+            <span>Vacation: 16-17 April, 15 May, 8-9 Jun, 6-7 Jul</span>
             <span>Priority: holiday → weekend → vacation → working day</span>
           </div>
         </section>
@@ -296,8 +296,8 @@
 
     <script>
       const HAMBURG_TIMEZONE = "Europe/Berlin";
-      const targetDate = new Date("2026-09-03T17:00:00+02:00");
-      const targetDateParts = { year: 2026, month: 9, day: 3 };
+      const targetDate = new Date("2026-08-14T17:00:00+02:00");
+      const targetDateParts = { year: 2026, month: 8, day: 14 };
 
       const publicHolidays = new Set([
         "2026-04-03",
@@ -310,9 +310,10 @@
       const vacationDays = new Set();
 
       vacationDays.add("2026-04-07");
+      addDateRangeToSet(vacationDays, 2026, 4, 16, 2026, 4, 17);
       vacationDays.add("2026-05-15");
-      vacationDays.add("2026-06-08");
-      vacationDays.add("2026-07-06");
+      addDateRangeToSet(vacationDays, 2026, 6, 8, 2026, 6, 9);
+      addDateRangeToSet(vacationDays, 2026, 7, 6, 2026, 7, 7);
 
       const monthsEl = document.getElementById("months");
       const daysEl = document.getElementById("days");
