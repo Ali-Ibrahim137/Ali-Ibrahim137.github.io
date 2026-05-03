@@ -1,26 +1,33 @@
 ---
-layout: page
+layout: default
 ---
+
+{%- assign category_posts = site.posts | where_exp: "post", "post.categories contains page.category" -%}
+{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
 
 <div class="page-container">
   <div class="content-wrapper">
-    <main class="homepage-main">
+    <main class="homepage-main category-page">
+      <header class="category-header">
+        <h1>{{ page.title | escape }}</h1>
+        <p>{{ category_posts | size }} post{% if category_posts.size != 1 %}s{% endif %}</p>
+      </header>
+
       <div class="search-container">
-        <input type="text" id="search-input" placeholder="Search posts by title..." class="search-input">
+        <input type="text" id="search-input" placeholder="Search {{ page.title | escape }} posts by title..." class="search-input">
       </div>
 
-      <!-- Hidden container with all posts -->
+      <!-- Hidden container with all posts in this category -->
       <div id="all-posts-container" style="display: none;">
-        {%- for post in site.posts -%}
+        {%- for post in category_posts -%}
           <div class="post-homepage-preview" data-title="{{ post.title | downcase }}">
-            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+            <div class="post-homepage-date">{{ post.date | date: date_format }}</div>
 
             <h3 class="post-homepage-title">
               <a class="post-homepage-link" href="{{ post.url | relative_url }}">
                 {{ post.title | escape }}
               </a>
             </h3>
-            <div class="post-homepage-date">{{ post.date | date: date_format }}</div>
 
             {%- if post.categories -%}
               <div class="post-categories" style="margin-left: 0;">
@@ -36,11 +43,11 @@ layout: page
 
             <div class="post-homepage-content">
               <div class="post-homepage-image">
-                <img src="{{ site.url }}{{ post.previewImage }}" alt="Preview" />
+                <img src="{{ post.previewImage | relative_url }}" alt="Preview" />
               </div>
               <div class="post-homepage-excerpt">
                 {{ post.excerpt }}
-                <a class="post-homepage-link" href="{{ post.url | relative_url }}">Read more →</a>
+                <a class="post-homepage-link" href="{{ post.url | relative_url }}">Read more &rarr;</a>
               </div>
             </div>
 
@@ -51,9 +58,8 @@ layout: page
 
       <!-- Visible posts container -->
       <div id="posts-container">
-        {%- for post in paginator.posts -%}
+        {%- for post in category_posts limit: 5 -%}
           <div class="post-homepage-preview" data-title="{{ post.title | downcase }}">
-            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
             <div class="post-homepage-date">{{ post.date | date: date_format }}</div>
 
             <h3 class="post-homepage-title">
@@ -76,11 +82,11 @@ layout: page
 
             <div class="post-homepage-content">
               <div class="post-homepage-image">
-                <img src="{{ site.url }}{{ post.previewImage }}" alt="Preview" />
+                <img src="{{ post.previewImage | relative_url }}" alt="Preview" />
               </div>
               <div class="post-homepage-excerpt">
                 {{ post.excerpt }}
-                <a class="post-homepage-link" href="{{ post.url | relative_url }}">Read more →</a>
+                <a class="post-homepage-link" href="{{ post.url | relative_url }}">Read more &rarr;</a>
               </div>
             </div>
 
@@ -89,33 +95,9 @@ layout: page
         {%- endfor -%}
       </div>
 
-      <!-- Pagination container -->
-      <div class="pagination" id="pagination-container">
-        {% assign first_page_url = '/' %}
-        {% assign last_page_url = site.paginate_path | replace: ':num', paginator.total_pages | relative_url %}
-        {% if paginator.page != 1 %}
-          <a href="{{ first_page_url }}">First</a>
-        {% endif %}
-        {% if paginator.previous_page %}
-          <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; Previous</a>
-        {% endif %}
-        {% for page in (1..paginator.total_pages) %}
-          {% if page == paginator.page %}
-            <span class="page-number current">{{ page }}</span>
-          {% elsif page == 1 %}
-            <a href="{{ '/' | relative_url }}">1</a>
-          {% else %}
-            <a href="{{ site.paginate_path | replace: ':num', page | relative_url }}">{{ page }}</a>
-          {% endif %}
-        {% endfor %}
-        {% if paginator.next_page %}
-          <a href="{{ paginator.next_page_path | relative_url }}">Next &raquo;</a>
-        {% endif %}
-        {% if paginator.page != paginator.total_pages %}
-          <a href="{{ last_page_url }}">Last</a>
-        {% endif %}
-      </div>
+      <div class="pagination" id="pagination-container"></div>
     </main>
+
     <aside class="homepage-sidebar">
       {% include archive-tree.html %}
     </aside>

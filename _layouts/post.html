@@ -16,7 +16,9 @@ layout: default
     {%- if page.categories -%}
       <div class="post-categories">
         {%- for category in page.categories -%}
-          <a href="{{ '/categories/' | append: category | relative_url }}" class="category-badge">
+          {%- assign category_slug = category | slugify -%}
+          {%- assign category_url = '/categories/' | append: category_slug | append: '/' -%}
+          <a href="{{ category_url | relative_url }}" class="category-badge">
             {{ category }}
           </a>
         {%- endfor -%}
