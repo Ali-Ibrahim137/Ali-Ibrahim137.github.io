@@ -1,0 +1,107 @@
+---
+layout: default
+---
+
+{%- assign category_posts = site.posts | where_exp: "post", "post.categories contains page.category" -%}
+{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+
+<div class="page-container">
+  <div class="content-wrapper">
+    <main class="homepage-main category-page">
+      <header class="category-header">
+        <h1>{{ page.title | escape }}</h1>
+        <p>{{ category_posts | size }} post{% if category_posts.size != 1 %}s{% endif %}</p>
+      </header>
+
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search {{ page.title | escape }} posts by title..." class="search-input">
+      </div>
+
+      <!-- Hidden container with all posts in this category -->
+      <div id="all-posts-container" style="display: none;">
+        {%- for post in category_posts -%}
+          <div class="post-homepage-preview" data-title="{{ post.title | downcase }}">
+            <div class="post-homepage-date">{{ post.date | date: date_format }}</div>
+
+            <h3 class="post-homepage-title">
+              <a class="post-homepage-link" href="{{ post.url | relative_url }}">
+                {{ post.title | escape }}
+              </a>
+            </h3>
+
+            {%- if post.categories -%}
+              <div class="post-categories" style="margin-left: 0;">
+                {%- for category in post.categories -%}
+                  {%- assign category_slug = category | slugify -%}
+                  {%- assign category_url = '/categories/' | append: category_slug | append: '/' -%}
+                  <a href="{{ category_url | relative_url }}" class="category-badge">
+                    {{ category }}
+                  </a>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+
+            <div class="post-homepage-content">
+              <div class="post-homepage-image">
+                <img src="{{ post.previewImage | relative_url }}" alt="Preview" />
+              </div>
+              <div class="post-homepage-excerpt">
+                {{ post.excerpt }}
+                <a class="post-homepage-link" href="{{ post.url | relative_url }}">Read more &rarr;</a>
+              </div>
+            </div>
+
+            <hr class="post-homepage-divider">
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <!-- Visible posts container -->
+      <div id="posts-container">
+        {%- for post in category_posts limit: 5 -%}
+          <div class="post-homepage-preview" data-title="{{ post.title | downcase }}">
+            <div class="post-homepage-date">{{ post.date | date: date_format }}</div>
+
+            <h3 class="post-homepage-title">
+              <a class="post-homepage-link" href="{{ post.url | relative_url }}">
+                {{ post.title | escape }}
+              </a>
+            </h3>
+
+            {%- if post.categories -%}
+              <div class="post-categories" style="margin-left: 0;">
+                {%- for category in post.categories -%}
+                  {%- assign category_slug = category | slugify -%}
+                  {%- assign category_url = '/categories/' | append: category_slug | append: '/' -%}
+                  <a href="{{ category_url | relative_url }}" class="category-badge">
+                    {{ category }}
+                  </a>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+
+            <div class="post-homepage-content">
+              <div class="post-homepage-image">
+                <img src="{{ post.previewImage | relative_url }}" alt="Preview" />
+              </div>
+              <div class="post-homepage-excerpt">
+                {{ post.excerpt }}
+                <a class="post-homepage-link" href="{{ post.url | relative_url }}">Read more &rarr;</a>
+              </div>
+            </div>
+
+            <hr class="post-homepage-divider">
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <div class="pagination" id="pagination-container"></div>
+    </main>
+
+    <aside class="homepage-sidebar">
+      {% include archive-tree.html %}
+    </aside>
+  </div>
+</div>
+
+<script src="{{ '/assets/js/search.js' | relative_url }}"></script>

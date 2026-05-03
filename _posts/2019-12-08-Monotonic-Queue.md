@@ -2,10 +2,14 @@
 layout: post
 title:  "Monotonic Queue"
 date:   2019-12-08
-categories: Competitive Programming
+categories: competitive-programming
+permalink: /monotonic-queue.html
+previewImage: /assets/img/previewImages/monotonic-queue.png
 ---
 ## Motivation Problem
 Given $$n \times m$$ matrix $$(1 \le n, m \le 3*10^3)$$ you have to calculate the sum of minimum numbers in all sub-matrices of size $$a\times b$$ with top left corners in $$(i, j)$$ over all $$1 \le i \le n-a+1$$ and $$1 \le j \le m-b+1$$.
+
+<!--more-->
 
 Problem is available at Codeforces [here](https://codeforces.com/contest/1195/problem/E).
 

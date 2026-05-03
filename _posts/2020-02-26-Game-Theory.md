@@ -2,7 +2,9 @@
 layout: post
 title:  "Game Theory"
 date:   2020-02-26
-categories: Competitive programming
+categories: competitive-programming
+permalink: /game-theory.html
+previewImage: /assets/img/previewImages/game-theory.png
 ---
 
 ## Combinatorial Games
@@ -14,9 +16,8 @@ The game is said to be Combinatorial if it satisfies the following conditions:
 	 - Combinatorial ***impartial games*** this happens when $$F_1 = F_2$$, this means both players have the same options of moving from each position.
 	 - Combinatorial ***partizan games*** this happens when $$F_1\ne F_2$$, this includes games like chess or checkers in which one player moves the white pieces, and the other player moves the black pieces.
  4. There is an end position of the game, usually called the ***terminal position.*** In **normal play rule** the player making the last move wins the game, in **misère play rules** the player making the last move loses the game.
-
 5. The game always ends after some finite number of moves.
-
+<!--more-->
 # P-positions and N-positions
 Every position in the game can be either **P**revious or **N**ext. previous positions are wining for the previous player (the player who just moved), and next positions are wining for the next player to move. We can find **P** and **N** positions using these rules:
 1. All terminal positions are P-positions.
