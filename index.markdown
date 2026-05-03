@@ -4,5 +4,3 @@
 
 layout: home
 ---
-
-[⏳ Countdown to August 14, 2026](/projects/countdown/)
