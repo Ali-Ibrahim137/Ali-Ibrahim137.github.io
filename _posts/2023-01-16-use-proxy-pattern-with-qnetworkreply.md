@@ -3,6 +3,7 @@ layout: post
 title:  "How to use Proxy pattern with QNetworkReply?"
 date:   2023-01-16
 categories: qt design-patterens
+permalink: /use-proxy-pattern-with-qnetworkreply.html
 previewImage: /assets/img/Maximum Independent Set in Bipartite Graphs/1.png
 ---
 ## Background

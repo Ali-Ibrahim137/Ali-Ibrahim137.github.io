@@ -3,6 +3,7 @@ layout: post
 title:  "Maximum Independent Set in Bipartite Graphs"
 date:   2020-01-02
 categories: competitive-programming
+permalink: /maximum-independent-set-in-bipartite-graphs.html
 previewImage: /assets/img/Maximum Independent Set in Bipartite Graphs/1.png
 ---
 # Introduction

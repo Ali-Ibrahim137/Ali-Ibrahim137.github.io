@@ -3,6 +3,7 @@ layout: post
 title:  "Game Theory"
 date:   2020-02-26
 categories: competitive-programming
+permalink: /game-theory.html
 previewImage: /assets/img/Maximum Independent Set in Bipartite Graphs/1.png
 ---
 

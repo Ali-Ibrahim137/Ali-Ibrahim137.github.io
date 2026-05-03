@@ -3,6 +3,7 @@ layout: post
 title:  "Stress Testing"
 date:   2020-08-23
 categories: competitive-programming
+permalink: /stress-testing.html
 previewImage: /assets/img/Maximum Independent Set in Bipartite Graphs/1.png
 ---
 I decided to write this article after watching the last screencast made by [Errichto](https://codeforces.com/profile/Errichto). To be more precise when he started making stress testing to find counter-test you can check that [here](https://www.youtube.com/watch?v=uABbBGtEWks&feature=youtu.be&t=1433). Errichto has a full video called [How to test your solution in Competitive Programming, on Linux?](https://www.youtube.com/watch?v=JXTVOyQpSGM) I highly recommend you to check it, basically this article is the same but I am extending it to stress test solutions with multiple answers using a written checker, so let's jump in.

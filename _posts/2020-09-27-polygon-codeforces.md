@@ -3,9 +3,7 @@ layout: post
 title:  "Polygon.CodeForces Tutorial"
 date:   2020-09-27
 categories: competitive-programming
-shortUrl: qwerty
-previewImage: /assets/img/Maximum Independent Set in Bipartite Graphs/1.png
-permalink: /2020/09/27/qwerty.html
+permalink: /polygon-codeforces-tutorial.html
 previewImage: /assets/img/Maximum Independent Set in Bipartite Graphs/1.png
 ---
 # What is Polygon

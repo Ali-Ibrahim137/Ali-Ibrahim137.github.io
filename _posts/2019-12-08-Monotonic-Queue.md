@@ -3,6 +3,7 @@ layout: post
 title:  "Monotonic Queue"
 date:   2019-12-08
 categories: competitive-programming
+permalink: /monotonic-queue.html
 previewImage: /assets/img/Maximum Independent Set in Bipartite Graphs/1.png
 ---
 ## Motivation Problem

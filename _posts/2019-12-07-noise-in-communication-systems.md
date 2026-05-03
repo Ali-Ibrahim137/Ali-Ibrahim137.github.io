@@ -3,6 +3,7 @@ layout: post
 title:  "Noise in Communication Systems"
 date:   2019-12-07
 categories: digital-communications
+permalink: /noise-in-communication-systems.html
 previewImage: /assets/img/Maximum Independent Set in Bipartite Graphs/1.png
 ---
 
