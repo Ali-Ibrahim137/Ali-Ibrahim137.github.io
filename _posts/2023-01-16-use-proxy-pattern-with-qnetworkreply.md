@@ -4,7 +4,7 @@ title:  "How to use Proxy pattern with QNetworkReply?"
 date:   2023-01-16
 categories: qt design-patterens
 permalink: /use-proxy-pattern-with-qnetworkreply.html
-previewImage: /assets/img/Maximum Independent Set in Bipartite Graphs/1.png
+previewImage: /assets/img/previewImages/Qt-logo.webp
 ---
 ## Background
 In a previous project that I worked on, we had to connect to backend API using Qt framework in order to download some files and display some content of these files, this thing might look easily done using **QNetworkAccessManager** and **QNetworkReply**. But we had other things to consider:

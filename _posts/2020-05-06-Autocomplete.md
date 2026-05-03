@@ -4,7 +4,7 @@ title:  "Autocomplete"
 date:   2020-05-06
 categories: software-engineering
 permalink: /autocomplete.html
-previewImage: /assets/img/Maximum Independent Set in Bipartite Graphs/1.png
+previewImage: /assets/img/previewImages/autocomplete.png
 ---
 
 ## Autocomplete

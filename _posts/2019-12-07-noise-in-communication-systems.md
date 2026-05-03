@@ -4,7 +4,7 @@ title:  "Noise in Communication Systems"
 date:   2019-12-07
 categories: digital-communications
 permalink: /noise-in-communication-systems.html
-previewImage: /assets/img/Maximum Independent Set in Bipartite Graphs/1.png
+previewImage: /assets/img/previewImages/noise.png
 ---
 
 The term noise refers to ***unwanted*** electrical signal in electrical systems. This unwanted signal masks the information signal, limiting the transmission rate and affecting the receivers ability to make the correct symbol decision.

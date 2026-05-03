@@ -62,15 +62,27 @@ body {
   align-items: flex-start;
 }
 
+.post-homepage-image {
+  flex: 0 0 360px;
+}
+
 .post-homepage-image img {
-  max-width: 150px;
-  height: auto;
+  display: block;
+  width: 360px;
+  height: 220px;
   border-radius: 6px;
-  object-fit: cover;
+  object-fit: contain;
+}
+
+.post .post-content .post-homepage-image img {
+  width: 360px;
+  max-width: 360px;
+  height: 220px;
 }
 
 .post-homepage-excerpt {
   flex: 1;
+  min-width: 0;
   font-size: 1rem;
   color: #333;
 }
@@ -330,5 +342,18 @@ body {
   .category-badge {
     padding: 0.2rem 0.6rem;
     font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .post-homepage-content {
+    flex-direction: column;
+  }
+
+  .post-homepage-image,
+  .post-homepage-image img,
+  .post .post-content .post-homepage-image img {
+    width: 100%;
+    max-width: 100%;
   }
 }
