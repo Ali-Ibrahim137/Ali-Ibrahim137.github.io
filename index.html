@@ -36,7 +36,7 @@ layout: page
 
             <div class="post-homepage-content">
               <div class="post-homepage-image">
-                <img src="{{ site.url }}{{ post.previewImage }}" alt="Preview" />
+                <img src="{{ post.previewImage | relative_url }}" alt="Preview" />
               </div>
               <div class="post-homepage-excerpt">
                 {{ post.excerpt }}
@@ -76,7 +76,7 @@ layout: page
 
             <div class="post-homepage-content">
               <div class="post-homepage-image">
-                <img src="{{ site.url }}{{ post.previewImage }}" alt="Preview" />
+                <img src="{{ post.previewImage | relative_url }}" alt="Preview" />
               </div>
               <div class="post-homepage-excerpt">
                 {{ post.excerpt }}
