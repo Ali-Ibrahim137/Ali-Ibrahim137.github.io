@@ -39,7 +39,7 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-paginate
-google_analytics: UA-154163127-1
+google_analytics: G-YSW7XHR583
 
 markdown: kramdown
 kramdown:
