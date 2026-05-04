@@ -8,10 +8,10 @@ previewImage: /assets/img/previewImages/autocomplete.png
 ---
 
 ## Autocomplete
-Autocomplete is the feature when an application predicts the complete word, after just typing some **prefix** of the word. You must have used autocomplete feature a lot in your life in many area like:
-- Search engines, Google search engine suggests to you an autocomplete feature when you type some text in the search bar, usually sorted by most trends.
-- Emails, as you start writing some **prefix** of the Email address you will get a list of suggestions.
-- Social media, like facebook, linkedin, instagram...
+Autocomplete is the feature where an application predicts the complete word after just typing some **prefix** of the word. You must have used autocomplete a lot in your life in many areas like:
+- Search engines: Google Search suggests autocomplete entries when you type some text in the search bar, usually sorted by trends.
+- Emails: as you start writing some **prefix** of the email address, you will get a list of suggestions.
+- Social media, like Facebook, LinkedIn, Instagram...
 - In source code editors, actually I am using Atom right now and I have used autocomplete for at least 10 times just in the first small part of this article.
 <!--more-->
 | ![]({{site.url}}/assets/img/Autocomplete/1.png)|
@@ -19,11 +19,11 @@ Autocomplete is the feature when an application predicts the complete word, afte
 | Figure 1: Autocomplete with Google Search Engine |
 
 
-Autocomplete can be a powerful tool to minimize the number of keystrokes needed to type a word, also in some cases like search engines it helps you to get good suggestions about what you are looking for, however implementing autocomplete is not an easy task, you should know the right data structures to use to archive the best space and time complexity. In this article I will be talking about two different implementations using ***Trie*** and ***Ternary Search Trees*** data structures.
+Autocomplete can be a powerful tool to minimize the number of keystrokes needed to type a word. Also, in some cases like search engines, it helps you get good suggestions about what you are looking for. However, implementing autocomplete is not an easy task: you should know the right data structures to use to achieve good space and time complexity. In this article I will be talking about two different implementations using ***Trie*** and ***Ternary Search Trees***.
 
 ### Trie
 Trie is a tree-like data structure used to store strings, it supports insert, search and delete operations in $$O(n)$$ time. Each node of the trie contains an array of pointers for every character of the alphabet, in addition to a Boolean flag to indicate the end of string. The basic TrieNode implementation in C++ looks like:
-```
+```cpp
 const int ALPHABET_SIZE = 26;
 struct TrieNode{
     bool end_of_string;
@@ -35,7 +35,7 @@ struct TrieNode{
 }*root = new TrieNode();
 ```
 This is a trie that stores the list of strings:
-`["CAR", "CAT", "CODE", "CODER", "PAPER", "TREE", 'TRIE']`. The first empty node is the root of the trie, nodes that are terminate words are marked with light green. In this figure I only showed the non null pointers, if I wanted to show the null pointers it will look a complete mess, now this thing makes Trie data structure inefficient in space complexity, I will be talking about that later on.
+`["CAR", "CAT", "CODE", "CODER", "PAPER", "TREE", "TRIE"]`. The first empty node is the root of the trie; nodes that terminate words are marked with light green. In this figure I only showed the non-null pointers. If I wanted to show the null pointers, it would look like a complete mess. This makes the Trie data structure inefficient in space complexity; I will be talking about that later on.
 
 | ![]({{site.url}}/assets/img/Autocomplete/2.png)|
 |:--:|
@@ -45,7 +45,7 @@ This is a trie that stores the list of strings:
 To insert a string in the trie, every character of the input string is inserted as an individual TrieNode. The children of this node are pointers to the next TrieNodes. If the character in the input string is already existing in the pointers array we follow the pointer in the current TrieNode array of pointers, however if the character is null we need to construct it. When we reach the last character of the string we set the value of the `end_of_string` flag to be `true.`
 
 The implementation of the insert function in C++ looks like:
-```
+```cpp
 void insert(string str){
     TrieNode *cur = this;
     int n = str.length();
@@ -60,7 +60,7 @@ void insert(string str){
 
 - #### Search for string in the Trie
 In search operation we also start from the root of the trie and check if every character in the string is existing, the search ends with *failure* if some character is not existing, or we reach the end of the string and the `end_of_string` flag is not set, otherwise the search is *success.* The implementation of the search function in C++ looks like:
-```
+```cpp
 bool search(string str){
     TrieNode *cur = this;
     int n = str.length();
@@ -74,8 +74,8 @@ bool search(string str){
 ```
 
 - #### Prefix autocomplete using Trie
-The autocomplete function is an extension to the search function, first we search for the given prefix, then do a traversal of the tree starting from the end node of the search. Every time we reach a node with the `end_of_string` flag set, we add this string to the list of words. This traversal can be either bfs or dfs. The implementation of the autocomplete function in C++ looks like:
-```
+The autocomplete function is an extension to the search function, first we search for the given prefix, then do a traversal of the tree starting from the end node of the search. Every time we reach a node with the `end_of_string` flag set, we add this string to the list of words. This traversal can be either BFS or DFS. The implementation of the autocomplete function in C++ looks like:
+```cpp
 vector<string> AutoComplete(string str){
     TrieNode *cur = this;
     vector<string>ret;
@@ -89,7 +89,7 @@ vector<string> AutoComplete(string str){
 }
 ```
 And the bfs traversal will be:
-```
+```cpp
 vector<string> bfs(string str){
     vector<string>ret;
     queue<pair<TrieNode*, string> >q;
@@ -113,12 +113,12 @@ vector<string> bfs(string str){
 }
 ```
 - #### Advantages and disadvantages of using trie
-Trie is easy to implement, fast as all the operations (insert, search, delete, autocomplete) run in $$O(n)$$, where $$n$$ is the length of the input string, but in terms of space complexity trie is not the best choice, every node of the trie stores an array of pointers with size equal to `ALPHABET_SIZE` and most of these pointers are null pointers. In case of using lower case and upper case English letters, digits, punctuation marks, international characters... This can be very big and memory consuming. You can use trie in case of medium size data with small `ALPHABET_SIZE`.
+Trie is easy to implement and fast, as all the operations (insert, search, delete, autocomplete) run in $$O(n)$$, where $$n$$ is the length of the input string. But in terms of space complexity, trie is not the best choice: every node of the trie stores an array of pointers with size equal to `ALPHABET_SIZE`, and most of these pointers are null pointers. In case of using lowercase and uppercase English letters, digits, punctuation marks, international characters, etc., this can be very big and memory consuming. You can use trie in case of medium-sized data with small `ALPHABET_SIZE`.
 
 ### Ternary Search Trees
-Ternary Search Trees, also know as TST is similar to Binary Search Trees, in BST every node has a value and two pointers to two subtrees, pointer for the left child having value less than the current node, and pointer for the right child having value greater than the current node, in addition to that TST has an extra pointer often called the middle pointer, pointing for the child having value equal to the current node, TST also contains `end_of_string` flag, just like a normal trie. The basic TSTNode implementation in C++ looks like:
+Ternary Search Trees, also known as TST, are similar to Binary Search Trees. In BST every node has a value and two pointers to two subtrees: the left child has a value less than the current node, and the right child has a value greater than the current node. In addition, TST has an extra pointer often called the middle pointer, pointing to the child having a value equal to the current node. TST also contains an `end_of_string` flag, just like a normal trie. The basic TSTNode implementation in C++ looks like:
 
-```
+```cpp
 struct TSTNode{
     bool end_of_string;
     TSTNode *left, *right, *middle;
@@ -133,15 +133,15 @@ struct TSTNode{
 
 ```
 This is a TST that stores the list of strings:
-`["CAR", "CAT", "CODE", "CODER", "PAPER", "TREE", 'TRIE', 'TST']`. Nodes that are terminate words are marked with light green.
+`["CAR", "CAT", "CODE", "CODER", "PAPER", "TREE", "TRIE", "TST"]`. Nodes that terminate words are marked with light green.
 
 | ![]({{site.url}}/assets/img/Autocomplete/3.png)|
 |:--:|
 | Figure 3: Basic TST structure |
 
 - #### Insert string to TST
-Insertion to TST is an easy task, we jsut have to do character comparison between the string character and the current node character, if they are equal move to the middle child, if the string character is smaller then move to the left child, otherwise move to the right child, update the character value at every node, and check set the `end_of_string` flag in the last node, The implementation of the insert function in C++ looks like:
-```
+Insertion to TST is an easy task. We just have to do character comparison between the string character and the current node character. If they are equal, move to the middle child. If the string character is smaller, then move to the left child; otherwise, move to the right child. Update the character value at every node, and set the `end_of_string` flag in the last node. The implementation of the insert function in C++ looks like:
+```cpp
 TSTNode *insert(TSTNode *head, string str, int idx){
     if(idx==str.length()){
         if(head==NULL)head = new TSTNode();
@@ -160,8 +160,8 @@ TSTNode *insert(TSTNode *head, string str, int idx){
 ```
 
 - #### Search for string in the TST
-Searching in the TST is similar to inserting, we start from the root of the TST and do character comparison at every node, and we go to the middle, left or right child, if we reach a null node then the string is not present in the TST, when we reach the last character of the string we need to check the value of the `end_of_string` flag, The implementation of the search function in C++ looks like:
-```
+Searching in the TST is similar to inserting. We start from the root of the TST and do character comparison at every node, and we go to the middle, left, or right child. If we reach a null node then the string is not present in the TST. When we reach the last character of the string we need to check the value of the `end_of_string` flag. The implementation of the search function in C++ looks like:
+```cpp
 bool search(string str){
     TSTNode *root = this;
     int n = str.length();
@@ -182,7 +182,7 @@ bool search(string str){
 - #### Prefix autocomplete using TST
 Follows the same logic as using trie, the implementation of the search function in C++ looks like:
 
-```
+```cpp
 vector<string> bfs(string str){
     vector<string>ret;
     queue<pair<TSTNode*, pair<string, int> > >q;
@@ -222,10 +222,10 @@ vector<string> AutoComplete(string str){
 }
 ```
 - #### Advantages of using TST
-TST is much more efficient in space complexity, also operations such as (insert, search, delete, autocomplete) run in $$O(n)$$, where $$n$$ is the length of the input string, TST can also be used as spell checker (I might consider writing an article about it). For the best performance of TST strings should be inserted randomly not in alphabetical order, if inserted in alphabetical order then each sub-tree that corresponds to a single trie node would degenerate into a linked list, significantly increasing the cost of searching.
+TST is much more efficient in space complexity. Also, operations such as (insert, search, delete, autocomplete) run in $$O(n)$$, where $$n$$ is the length of the input string. TST can also be used as a spell checker (I might consider writing an article about it). For the best performance of TST, strings should be inserted randomly, not in alphabetical order. If inserted in alphabetical order, then each subtree that corresponds to a single trie node would degenerate into a linked list, significantly increasing the cost of searching.
 
 # Conclusion
-In this article we started by talking about autocomplete feature, then we moved to trie data structure and explained the main functions of trie and how to use it in autocomplete, we then showed that trie is inefficient in terms of space complexity and then talked about Ternary Search Trees.
+In this article we started by talking about the autocomplete feature, then we moved to the trie data structure and explained the main functions of trie and how to use it in autocomplete. We then showed that trie is inefficient in terms of space complexity and talked about Ternary Search Trees.
 
 The full code for this problem is available [here](https://github.com/Ali-Ibrahim137/Autocomplete).
 

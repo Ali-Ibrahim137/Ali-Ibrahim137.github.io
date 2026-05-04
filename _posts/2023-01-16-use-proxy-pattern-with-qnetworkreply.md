@@ -7,12 +7,16 @@ permalink: /use-proxy-pattern-with-qnetworkreply.html
 previewImage: /assets/img/previewImages/Qt-logo.webp
 ---
 ## Background
-In a previous project that I worked on, we had to connect to backend API using Qt framework in order to download some files and display some content of these files, this thing might look easily done using **QNetworkAccessManager** and **QNetworkReply**. But we had other things to consider:
+
+In a previous project that I worked on, we had to connect to a backend API using the Qt framework in order to download some files and display some content of these files. This thing might look easily done using **QNetworkAccessManager** and **QNetworkReply**. But we had other things to consider:
+
 - Size of the downloaded files was large.
 - No file should be stored in the device running the application.
 <!--more-->
+
 # Backend
-I will be using **Flask** as a dummy backend, I want to keep things simple by just adding tow routes, `/api/files` to get a list of files to download, and `/api/download/file/<variant>` to download a file, the `dummy_backend.py` file will be:
+
+I will be using **Flask** as a dummy backend. I want to keep things simple by just adding two routes, `/api/files` to get a list of files to download, and `/api/download/file/<variant>` to download a file. The `dummy_backend.py` file will be:
 
 {% highlight python linenos %}
 from flask import abort, Flask, jsonify, send_file
@@ -38,7 +42,7 @@ def list_files():
 
 @app.route("/api/download/file/<variant>")
 def download_file(variant=None):
-    if not variant in DUMMY_FILES:
+    if variant not in DUMMY_FILES:
         abort(404)
         
     return send_file(
@@ -60,8 +64,8 @@ The current state can be found at this [commit.](https://github.com/Ali-Ibrahim1
 
 
 ## UI
-I will be keeping the ui very simple:
-- `QTextEdit` with `readOnly` property set to `true`, the QTextEdit will be used to display the first 1000 characters of the file content. 
+I will be keeping the UI very simple:
+- `QTextEdit` with `readOnly` property set to `true`. The QTextEdit will be used to display the first 1000 characters of the file content.
 - `QComboBox` to list all the available files.
 - `QLabel` to display summary text of the file.
 - `QPushButton` to download the selected file.
@@ -72,7 +76,7 @@ UI will look like this for now, without any data.
 The current state can be found at this [commit.](https://github.com/Ali-Ibrahim137/Proxy-pattern-with-QNetworkReply/commit/5d27e462590a50ce71929c44577243ab95866f3c)
 
 ## Implementation without Proxy Pattern
-To send network requests and receive replies We need to use `QNetworkAccessManager`, Let's create two new files `api_handler.h` and `api_handler.cpp`.
+To send network requests and receive replies, we need to use `QNetworkAccessManager`. Let's create two new files: `api_handler.h` and `api_handler.cpp`.
 
 Contents of `api_handler.h` will be:
 
@@ -109,7 +113,7 @@ private:
 
 And `api_handler.cpp` will be:
 
-{% highlight cpp liones %}
+{% highlight cpp linenos %}
 // local
 #include "api_handler.h"
 
@@ -138,8 +142,8 @@ QNetworkReply *APIHandler::DownloadFile(const QString &fileName)
 }
 {% endhighlight %}
 
-Finally, Modify `mainwindow.cpp` file to become:
-{% highlight cpp liones %}
+Finally, modify the `mainwindow.cpp` file to become:
+{% highlight cpp linenos %}
 // local
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -203,7 +207,7 @@ MainWindow::MainWindow(QWidget *parent)
             if(reply->error() == QNetworkReply::NoError)
             {
                 auto data = reply->readAll();
-                // Do What ever you want with data now.
+                // Do whatever you want with data now.
                 auto dataToDisplay = QString(data).left(std::min(constants::MAX_CONTENT_LENGTH, data.length()));
                 if(data.length() > constants::MAX_CONTENT_LENGTH)
                 {
@@ -226,28 +230,28 @@ MainWindow::~MainWindow()
 }
 {% endhighlight %}
 
-If you are familiar with Qt you would know that this is just a simple process, we have just created `QNetworkAccessManager` instance to make api calls, returned `QNetworkReply` and just connected to `finished` signal.
+If you are familiar with Qt, you would know that this is just a simple process. We have just created a `QNetworkAccessManager` instance to make API calls, returned `QNetworkReply`, and connected to the `finished` signal.
 
 The current state can be found at this [commit.](https://github.com/Ali-Ibrahim137/Proxy-pattern-with-QNetworkReply/commit/1f857f7893ff37ed0dfd9ea70c945301f34a086e)
 
 ## Adding Proxy pattern using signals and slots (Bad approach)
 By definition, Proxy is a structural design pattern that lets you provide a substitute or placeholder for another object. A proxy controls access to the original object, allowing you to perform something either before or after the request gets through to the original object.
 
-In our case, proxy will be used both before and after the request gets through to the backend API, inside our proxy we will first check if this file was downloaded before, if it wasn't then call the end point, store the received `data` and next time return it.
+In our case, the proxy will be used both before and after the request gets through to the backend API. Inside our proxy, we will first check if this file was downloaded before. If it wasn't, then we call the endpoint, store the received `data`, and return it next time.
 
 But things here aren't as simple as you think, what should you store? You might think it's the received `QNetworkReply`. However there are many restrictions on this:
 - `finished` signal won't be emitted if you use the reply, because this signal is emitted only once.
 - `QNetworkReply` is a sequential-access `QIODevice`, which means that once data is read from the object, it is no longer kept by the device. It is therefore the application's responsibility to keep this data if it needs to.
 
-Solution to this problem would be to use `signals and slots`. `APIHandler` class would now listen to `finished` signal, and emit different signals with the content read from the reply. To do so we will add three signals to `APIHandler` class, these signals will be:
-{% highlight cpp liones %}
+The solution to this problem would be to use `signals and slots`. The `APIHandler` class would now listen to the `finished` signal and emit different signals with the content read from the reply. To do so, we will add three signals to the `APIHandler` class. These signals will be:
+{% highlight cpp linenos %}
 void FilesListObtained(const QByteArray &data);
 void FileObtained(const QByteArray &data, const QString &fileName);
 void Error(const QString &message);
 {% endhighlight %}
 
 `api_handler.cpp` will now look like this:
-{% highlight cpp liones %}
+{% highlight cpp linenos %}
 void APIHandler::GetFilesList()
 {
     const QString url = m_hostUrl + constants::FILES_ENDPOINT;
@@ -285,9 +289,9 @@ void APIHandler::DownloadFile(const QString &fileName)
 }
 {% endhighlight %}
 
-Now it's the proxy responsibility to connect to these signals, and forward then to gui, Let's create `APIProxy` class. `api_proxy.h` will look like this:
+Now it's the proxy's responsibility to connect to these signals and forward them to the GUI. Let's create an `APIProxy` class. `api_proxy.h` will look like this:
 
-{% highlight cpp liones %}
+{% highlight cpp linenos %}
 #ifndef API_PROXY_H
 #define API_PROXY_H
 
@@ -329,7 +333,7 @@ private:
 
 `api_proxy.cpp` will contain:
 
-{% highlight cpp liones %}
+{% highlight cpp linenos %}
 // local
 #include "api_proxy.h"
 
@@ -384,8 +388,8 @@ void APIProxy::InitializeConnections()
 }
 {% endhighlight %}
 
-`APIHandler` now will read data and emit signals, `GetFilesList()` will become:
-{% highlight cpp liones %}
+`APIHandler` now will read data and emit signals. `GetFilesList()` will become:
+{% highlight cpp linenos %}
 void APIHandler::GetFilesList()
 {
     const QString url = m_hostUrl + constants::FILES_ENDPOINT;
@@ -405,8 +409,8 @@ void APIHandler::GetFilesList()
 }
 {% endhighlight %}
 
-Finally `mainwindow.cpp` will now listen to signals from `APIProxy`, it will look like this:
-{% highlight cpp liones %}
+Finally, `mainwindow.cpp` will now listen to signals from `APIProxy`. It will look like this:
+{% highlight cpp linenos %}
 void MainWindow::InitializeConnections()
 {
     // APIProxy connections
@@ -426,7 +430,7 @@ void MainWindow::InitializeConnections()
     });
     connect(m_apiProxy.get(), &APIProxy::FileObtained, this, [this](const QByteArray &data)
     {
-        // Do What ever you want with data now.
+        // Do whatever you want with data now.
         auto dataToDisplay = QString(data).left(std::min(constants::MAX_CONTENT_LENGTH, data.length()));
         if(data.length() > constants::MAX_CONTENT_LENGTH)
         {
@@ -455,20 +459,20 @@ void MainWindow::InitializeConnections()
 }
 {% endhighlight %}
 
-We can now see that the end point is called only once, therefore files are downloaded only once.
+We can now see that the endpoint is called only once. Therefore, files are downloaded only once.
 
 The current state can be found at this [commit.](https://github.com/Ali-Ibrahim137/Proxy-pattern-with-QNetworkReply/commit/b91c4a9ca4942db8520b3e96674458618f063e6c)
 
 Now this approach faces many issues:
-- Too many signals, in our project we had about 30 api endpoints, and it was very painful to add all these signals.
+- Too many signals. In our project, we had about 30 API endpoints, and it was very painful to add all these signals.
 - You call a function somewhere, and the slot is in another place, I mean in our case we are calling `GetFilesList()` in the constructor, but the code related to slot is somewhere else.
-- You don't actually what part of your code called the function responsible for the slot, let's say you want to download some file and display parts of it in some case, in other case you want to do something with it's contents. You have to add some thing to specify who made the call, and this gets very smelly and hard to track.
+- You don't actually know what part of your code called the function responsible for the slot. Let's say you want to download some file and display parts of it in one case, and in another case you want to do something with its contents. You have to add something to specify who made the call, and this gets very smelly and hard to track.
 
 Let's see the next approach.
 
 ## Adding Proxy pattern using APIReply class (Better approach)
-We will add `APIReply` class as a wrapper for `QNetworkReply` it will be a class with the exact same methods and signals that we are using in our application, and now we will connect to signals from our `APIReply` class, similar to our first use case without proxy, let's jump to the code. `api_reply.h` will contain:
-{% highlight cpp liones %}
+We will add an `APIReply` class as a wrapper for `QNetworkReply`. It will be a class with the exact same methods and signals that we are using in our application, and now we will connect to signals from our `APIReply` class, similar to our first use case without proxy. Let's jump to the code. `api_reply.h` will contain:
+{% highlight cpp linenos %}
 #ifndef API_REPLY_H
 #define API_REPLY_H
 
@@ -505,7 +509,7 @@ private:
 {% endhighlight %}
 
 `api_reply.cpp` will contain:
-{% highlight cpp liones %}
+{% highlight cpp linenos %}
 // local
 #include "api_reply.h"
 
@@ -570,11 +574,11 @@ QString APIReply::errorString()
 }
 {% endhighlight %}
 
-`APIReply` class contains two constructors, one that takes `QNetworkReply`, connects to finished signal, reads the data and stores it locally, and another constructor that takes the previously read `QByteArray` and emits the finished signal immediately. This way in `mainwindow.cpp` we can use exactly the same way as our implementation without proxy.
+The `APIReply` class contains two constructors: one that takes `QNetworkReply`, connects to the `finished` signal, reads the data, and stores it locally, and another constructor that takes the previously read `QByteArray` and emits the `finished` signal immediately. This way, in `mainwindow.cpp`, we can use exactly the same way as our implementation without proxy.
 
 Complete code can be found at [this repo](https://github.com/Ali-Ibrahim137/Proxy-pattern-with-QNetworkReply).
 
 ### Conclusion
-In this article we went through describing the problem of using Proxy design pattern with `QNetworkReply`, we have shown two different ways to solve the problem, one is complex and smelly, the second one is more clean and much better.
+In this article, we went through describing the problem of using the Proxy design pattern with `QNetworkReply`. We have shown two different ways to solve the problem. One is complex and smelly; the second one is cleaner and much better.
 
 I hope you liked this article, please stay tuned for more.

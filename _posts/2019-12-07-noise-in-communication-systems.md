@@ -7,9 +7,9 @@ permalink: /noise-in-communication-systems.html
 previewImage: /assets/img/previewImages/noise.png
 ---
 
-The term noise refers to ***unwanted*** electrical signal in electrical systems. This unwanted signal masks the information signal, limiting the transmission rate and affecting the receivers ability to make the correct symbol decision.
+The term noise refers to an ***unwanted*** electrical signal in electrical systems. This unwanted signal masks the information signal, limiting the transmission rate and affecting the receiver's ability to make the correct symbol decision.
 
-In communication systems noise arises due to different sources, these sources can be classified in two categories:
+In communication systems, noise arises due to different sources. These sources can be classified into two categories:
  - Natural noise:
 	 - Atmospheric noise.
 	 - Noise from the sun.
@@ -19,9 +19,9 @@ In communication systems noise arises due to different sources, these sources ca
 	 - Radiating electromagnetic signals.
 <!--more-->
 
-Engineers must try their best to eliminate noise, or at least reduce its affects. This can be achieved through filtering, shielding, good choice of modulation and optimal selection of receiver's site, in remote dessert locations far from man-made noise sources.
+Engineers must try their best to eliminate noise, or at least reduce its effects. This can be achieved through filtering, shielding, good choice of modulation, and optimal selection of receiver site in remote desert locations far from man-made noise sources.
 
-Even with all these methods, there is one source of noise called ***Thermal*** noise, also known as ***Johnson*** noise that cannot be eliminated. Thermal noise occurs because of the thermal motion of electrons in different electronic components such as resistors and wires. The same electrons responsible for electronical conduction are responsible for making thermal noise.
+Even with all these methods, there is one source of noise called ***Thermal*** noise, also known as ***Johnson*** noise, that cannot be eliminated. Thermal noise occurs because of the thermal motion of electrons in different electronic components such as resistors and wires. The same electrons responsible for electrical conduction are responsible for making thermal noise.
 
 Thermal noise can be described as a zero-mean ***Gaussian*** random process. Statistically characterized by the Gaussian probability density function:
 
@@ -45,7 +45,7 @@ Where:
  - $$n$$ The  Gaussian noise random variable.
 
 ### White Noise
-The power spectral density of the thermal noise is the ***same*** for all frequencies used in communication systems, that means it emanates an equal amount of noise power per unite bandwidth at all frequencies an from dc to $$10^{12} Hz$$. The simplest model of thermal noise states that its power spectral density $$G_n(f)$$ is flat for all these frequencies and equal to:
+The power spectral density of the thermal noise is the ***same*** for all frequencies used in communication systems. That means it emanates an equal amount of noise power per unit bandwidth at all frequencies and from dc to $$10^{12} Hz$$. The simplest model of thermal noise states that its power spectral density $$G_n(f)$$ is flat for all these frequencies and equal to:
 
 > $$G_n(f) = \frac{N_0}{2} watts/hertz$$
 
@@ -54,7 +54,7 @@ The autocorrelation function of white noise is given by the Inverse Fourier Tran
 
 > $$R_n(\tau)=\mathscr{F}^{-1}{G_n(f)} = \frac{N_0}{2} \delta(\tau)$$
 
-Thus the autocorrelation of white noise is delta function weighted at $$\tau = 0$$ and is zero for $$\tau\neq0$$. So any two different samples of white noise are uncorrelated, from its time shifted version. since thermal noise is a Gaussian process and the samples are uncorrelated, the noise samples are also independent. Therefore the effect on the detection process of a channel with ***additive white Gaussian Noise (AWGN)*** is that the noise affects each transmitted signal ***independently***. The term ***additive*** means that the noise is added to the signal.
+Thus the autocorrelation of white noise is a delta function weighted at $$\tau = 0$$ and is zero for $$\tau\neq0$$. So any two different samples of white noise are uncorrelated with time-shifted versions. Since thermal noise is a Gaussian process and the samples are uncorrelated, the noise samples are also independent. Therefore the effect on the detection process of a channel with ***additive white Gaussian noise (AWGN)*** is that the noise affects each transmitted signal ***independently***. The term ***additive*** means that the noise is added to the signal.
 As the bandwidth of white noise is infinite, thus its average power is also infinite:
 
 > $$\int_{-\infty}^{\infty} \! \frac{N_0}{2} \, \mathrm{d}f = \infty$$
@@ -65,7 +65,7 @@ As the bandwidth of white noise is infinite, thus its average power is also infi
 | (b) Autocorrelation function of white noise |
 
 
-In real life applications, no noise process can be truly white. however most noise processes in real life can be assumed to be approximately white.
+In real-life applications, no noise process can be truly white. However most noise processes in real life can be assumed to be approximately white.
 
 ### SNR
 The Signal to Noise Ratio ( SNR ) is defined as the ratio of the signal power ( information signal ) to the power of noise ( unwanted signal ):
