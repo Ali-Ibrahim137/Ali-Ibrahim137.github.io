@@ -1,0 +1,33 @@
+<div class="blog-archive">
+  <h3>Blog Archive</h3>
+  <ul class="archive-tree">
+    {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+    {% for year in posts_by_year %}
+      <li>
+        <details {% if forloop.first %} open {% endif %}>
+          <summary>{{ year.name }} ({{ year.items | size }})</summary>
+          <ul>
+            {% assign posts_by_month = year.items | group_by_exp: "post", "post.date | date: '%B'" %}
+            {% assign months_order = "December,November,October,September,August,July,June,May,April,March,February,January" | split: "," %}
+            {% for month in months_order %}
+              {% for month_group in posts_by_month %}
+                {% if month == month_group.name %}
+                  <li>
+                    <details>
+                      <summary>{{ month }} ({{ month_group.items | size }})</summary>
+                      <ul>
+                        {% for post in month_group.items %}
+                          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+                        {% endfor %}
+                      </ul>
+                    </details>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+          </ul>
+        </details>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

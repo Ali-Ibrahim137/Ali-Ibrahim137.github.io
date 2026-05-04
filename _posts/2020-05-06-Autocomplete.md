@@ -2,7 +2,9 @@
 layout: post
 title:  "Autocomplete"
 date:   2020-05-06
-categories: Software Engineering
+categories: software-engineering
+permalink: /autocomplete.html
+previewImage: /assets/img/previewImages/autocomplete.png
 ---
 
 ## Autocomplete
@@ -11,7 +13,7 @@ Autocomplete is the feature when an application predicts the complete word, afte
 - Emails, as you start writing some **prefix** of the Email address you will get a list of suggestions.
 - Social media, like facebook, linkedin, instagram...
 - In source code editors, actually I am using Atom right now and I have used autocomplete for at least 10 times just in the first small part of this article.
-
+<!--more-->
 | ![]({{site.url}}/assets/img/Autocomplete/1.png)|
 |:--:|
 | Figure 1: Autocomplete with Google Search Engine |
