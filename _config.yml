@@ -18,14 +18,14 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Ali Ibrahim Site
+title: Ali Ibrahim Blog
 email: ali103575@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  In  my website I will be posting articles about Competitive Programming,
-  my study in communication engineering department, and different IT subjects
-  mainly about my learning process in Web development, You can contact me about
-  Competitive Programming by private messaging me on Codeforces, my handle is
-  C137, also fell free to E-mail me about anything else at ali103575@gmail.com.
+  Software engineer with 5+ years of experience building web applications,
+  backend systems, and practical software solutions.
+  I write about software engineering, algorithms, career experiences,
+  and occasional non-technical reflections.
+  Available for collaborations and freelance work at ali103575@gmail.com
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://ali-ibrahim137.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: ""
