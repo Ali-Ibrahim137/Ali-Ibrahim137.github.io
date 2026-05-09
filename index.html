@@ -50,7 +50,7 @@ layout: page
       </div>
 
       <!-- Visible posts container -->
-      <div id="posts-container">
+      <div id="posts-container" data-posts-per-page="{{ site.paginate | default: 5 }}">
         {%- for post in paginator.posts -%}
           <div class="post-homepage-preview" data-title="{{ post.title | downcase }}">
             {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}

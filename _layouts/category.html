@@ -4,6 +4,7 @@ layout: default
 
 {%- assign category_posts = site.posts | where_exp: "post", "post.categories contains page.category" -%}
 {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+{%- assign posts_per_page = site.paginate | default: 5 -%}
 
 <div class="page-container">
   <div class="content-wrapper">
@@ -57,8 +58,8 @@ layout: default
       </div>
 
       <!-- Visible posts container -->
-      <div id="posts-container">
-        {%- for post in category_posts limit: 5 -%}
+      <div id="posts-container" data-posts-per-page="{{ posts_per_page }}">
+        {%- for post in category_posts limit: posts_per_page -%}
           <div class="post-homepage-preview" data-title="{{ post.title | downcase }}">
             <div class="post-homepage-date">{{ post.date | date: date_format }}</div>
 

@@ -1,0 +1,85 @@
+<aside class="site-sidebar h-card">
+  <data class="u-url" value="{{ "/" | relative_url }}"></data>
+
+  {%- assign profile_image = site.profile_image -%}
+  {%- unless profile_image -%}
+    {%- assign profile_image = "https://github.com/" | append: site.github_username | append: ".png?size=320" -%}
+  {%- endunless -%}
+
+  <a class="sidebar-avatar-link" href="{{ "/" | relative_url }}" aria-label="{{ site.author | default: site.title | escape }}">
+    <img
+      class="sidebar-avatar u-photo"
+      src="{{ profile_image | relative_url }}"
+      alt="{{ site.author | default: site.title | escape }}"
+    >
+  </a>
+
+  <h2 class="sidebar-name p-name">{{ site.author | default: site.title | escape }}</h2>
+
+  {%- if site.sidebar.subtitle -%}
+    <p class="sidebar-subtitle">{{ site.sidebar.subtitle | escape }}</p>
+  {%- endif -%}
+
+  {%- if site.description -%}
+    <p class="sidebar-description">{{ site.description | escape }}</p>
+  {%- endif -%}
+
+  {%- if site.sidebar.intro_link -%}
+    <a class="sidebar-intro-link" href="{{ site.sidebar.intro_link.url | relative_url }}">
+      {{ site.sidebar.intro_link.text | escape }}
+    </a>
+  {%- endif -%}
+
+  <ul class="sidebar-contact-list">
+    {%- if site.sidebar.company -%}
+      <li>
+        <span class="sidebar-contact-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16">
+            <path d="M2 14h12v1H2v-1Zm1-1h2V8h2v5h2V8h2v5h2V5L8 2 3 5v8Zm1-7.35 4-2.4 4 2.4V13h-1V7H9v6H7V7H5v6H4V5.65Z"/>
+          </svg>
+        </span>
+        <span>
+          <a href="{{ site.sidebar.company.url }}">{{ site.sidebar.company.name | escape }}</a>
+          since {{ site.sidebar.company.since | escape }}
+        </span>
+      </li>
+    {%- endif -%}
+
+    {%- if site.sidebar.location -%}
+      <li>
+        <span class="sidebar-contact-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16">
+            <path d="M8 1.5A4.5 4.5 0 0 0 3.5 6c0 3.2 4.1 8.1 4.3 8.3l.2.2.2-.2c.2-.2 4.3-5.1 4.3-8.3A4.5 4.5 0 0 0 8 1.5Zm0 6.2A1.7 1.7 0 1 1 8 4.3a1.7 1.7 0 0 1 0 3.4Z"/>
+          </svg>
+        </span>
+        <span>{{ site.sidebar.location | escape }}</span>
+      </li>
+    {%- endif -%}
+
+    {%- for link in site.sidebar.links -%}
+      <li>
+        <span class="sidebar-contact-icon" aria-hidden="true">
+          {%- case link.label -%}
+            {%- when "Email" -%}
+              <svg viewBox="0 0 16 16">
+                <path d="M2 4h12v8H2V4Zm1.3 1L8 8.4 12.7 5H3.3ZM3 11h10V5.9L8 9.5 3 5.9V11Z"/>
+              </svg>
+            {%- when "GitHub" -%}
+              <svg viewBox="0 0 16 16">
+                <path d="M8 .7a7.3 7.3 0 0 0-2.3 14.2c.36.06.5-.15.5-.34v-1.28c-2.03.44-2.46-.86-2.46-.86-.33-.84-.8-1.06-.8-1.06-.66-.45.05-.44.05-.44.73.05 1.11.75 1.11.75.65 1.1 1.7.79 2.12.6.06-.47.25-.79.46-.97-1.62-.18-3.32-.81-3.32-3.6 0-.8.28-1.45.75-1.96-.08-.18-.33-.93.07-1.94 0 0 .62-.2 2.02.75A6.9 6.9 0 0 1 8 4.3c.62 0 1.24.08 1.82.25 1.4-.95 2.02-.75 2.02-.75.4 1.01.15 1.76.07 1.94.47.51.75 1.16.75 1.96 0 2.8-1.7 3.42-3.33 3.6.26.22.5.67.5 1.35v1.91c0 .19.13.4.5.34A7.3 7.3 0 0 0 8 .7Z"/>
+              </svg>
+            {%- when "LinkedIn" -%}
+              <svg viewBox="0 0 16 16">
+                <path d="M2.2 1.8a1.4 1.4 0 1 1 0 2.8 1.4 1.4 0 0 1 0-2.8ZM1 5.7h2.4V14H1V5.7Zm4 0h2.3v1.1h.03c.32-.6 1.1-1.25 2.27-1.25 2.43 0 2.88 1.6 2.88 3.68V14h-2.4V9.76c0-1.01-.02-2.31-1.41-2.31-1.41 0-1.63 1.1-1.63 2.24V14H5V5.7Z"/>
+              </svg>
+            {%- else -%}
+              <svg viewBox="0 0 16 16">
+                <path d="M8 2a6 6 0 1 0 0 12A6 6 0 0 0 8 2Zm0 1a5 5 0 1 1 0 10A5 5 0 0 1 8 3Z"/>
+              </svg>
+          {%- endcase -%}
+        </span>
+        <a href="{{ link.url }}">{{ link.label | escape }}</a>
+      </li>
+    {%- endfor -%}
+  </ul>
+</aside>

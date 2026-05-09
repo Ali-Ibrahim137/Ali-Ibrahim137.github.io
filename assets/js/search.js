@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let allPosts = [];
     let filteredPosts = [];
     let currentPage = 1;
-    const postsPerPage = 5;
+    const postsPerPage = Number(postsContainer.dataset.postsPerPage) || 5;
 
     // Initialize posts from the hidden container
     function initializePosts() {

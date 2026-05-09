@@ -2,17 +2,102 @@ body {
   overflow-x: hidden;
 }
 
-.page-container {
-  max-width: 1600px;
-  width: 94vw;
+.site-layout {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(230px, 280px) minmax(0, 1fr);
+  gap: clamp(1.5rem, 2.5vw, 3rem);
+  max-width: 1840px;
+  width: min(98vw, 1840px);
   margin: 0 auto;
+  padding: 2rem clamp(1.75rem, 3vw, 3.5rem) 3rem;
+}
+
+.site-main {
+  min-width: 0;
+}
+
+.site-sidebar {
+  color: #444;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  align-self: start;
+  position: sticky;
+  top: 1.5rem;
+}
+
+.sidebar-avatar-link {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.sidebar-avatar {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.sidebar-name {
+  margin: 0 0 0.2rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.sidebar-subtitle {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+}
+
+.sidebar-description {
+  margin: 0.8rem 0 1rem;
+  font-size: 0.9rem;
+}
+
+.sidebar-intro-link {
+  display: inline-block;
+  margin-bottom: 0.85rem;
+}
+
+.sidebar-contact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  margin: 0.55rem 0;
+}
+
+.sidebar-contact-icon {
+  display: inline-flex;
+  flex: 0 0 1rem;
+  color: #666;
+  margin-top: 0.16rem;
+}
+
+.sidebar-contact-icon svg {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+}
+
+.page-container {
+  max-width: none;
+  width: 100%;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 .content-wrapper {
   display: flex;
-  gap: clamp(1.5rem, 3vw, 3rem);
+  gap: clamp(1.25rem, 2vw, 2.25rem);
   width: 100%;
   align-items: flex-start;
 }
@@ -24,12 +109,17 @@ body {
 }
 
 .homepage-sidebar {
-  flex: 0 0 24rem;
+  flex: 0 0 clamp(18rem, 21vw, 23rem);
   min-width: 0;
   font-size: 0.85rem;
   border-left: 1px solid #e0e0e0;
   padding-left: 1rem;
   box-sizing: border-box;
+  align-self: flex-start;
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
+  position: sticky;
+  top: 1.5rem;
 }
 
 .post-homepage-divider {
@@ -137,10 +227,10 @@ body {
 
 .site-header .wrapper,
 .site-footer .wrapper {
-  max-width: 1600px !important;
-  width: min(94vw, 1600px) !important;
+  max-width: 1840px !important;
+  width: min(98vw, 1840px) !important;
   margin: 0 auto !important;
-  padding: 0 1rem !important;
+  padding: 0 clamp(1.75rem, 3vw, 3.5rem) !important;
 }
 
 .site-header {
@@ -273,20 +363,29 @@ body {
 }
 
 /* Keep post pages readable without crushing medium desktop widths. */
-.post .post-content,
-.post .post-title,
-.post .post-meta,
-.post .post-categories {
-  max-width: 1500px;
+.blog-post .post-content,
+.blog-post .post-title,
+.blog-post .post-meta,
+.blog-post .post-categories {
+  max-width: none;
   margin-left: auto;
   margin-right: auto;
   padding-left: 2rem;
-  padding-right: 2rem;
+  padding-right: 3rem;
 }
 
-.post .post-content img {
+.blog-post .post-content img {
   max-width: 100%;
   height: auto;
+}
+
+.blog-post .post-content pre,
+.blog-post .post-content code {
+  max-width: 100%;
+}
+
+.blog-post .post-content pre {
+  overflow-x: auto;
 }
 
 @media (max-width: 1200px) {
@@ -321,15 +420,40 @@ body {
     padding-left: 0;
     margin-top: 2rem;
     min-width: 0;
+    max-height: none;
+    overflow-y: visible;
+    position: static;
   }
 }
 
 @media (max-width: 900px) {
+  .site-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .site-sidebar {
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr);
+    column-gap: 1rem;
+    align-items: start;
+    position: static;
+  }
+
+  .sidebar-avatar-link {
+    grid-row: span 4;
+    margin-bottom: 0;
+  }
+
+  .sidebar-contact-list {
+    grid-column: 2;
+  }
+
   /* Post page mobile styles */
-  .post .post-content,
-  .post .post-title,
-  .post .post-meta,
-  .post .post-categories {
+  .blog-post .post-content,
+  .blog-post .post-title,
+  .blog-post .post-meta,
+  .blog-post .post-categories {
     padding-left: 1rem;
     padding-right: 1rem;
   }

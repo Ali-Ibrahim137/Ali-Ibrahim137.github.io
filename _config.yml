@@ -19,7 +19,9 @@
 # in the templates via {{ site.myvariable }}.
 
 title: Ali Ibrahim Blog
+author: Ali Ibrahim
 email: ali103575@gmail.com
+profile_image: /assets/img/my-photo.jpg
 description: >- # this means to ignore newlines until "baseurl:"
   Software engineer with 5+ years of experience building web applications,
   backend systems, and practical software solutions.
@@ -31,8 +33,25 @@ url: "https://ali-ibrahim137.github.io" # the base hostname & protocol for your 
 # twitter_username: ""
 github_username:  ali-ibrahim137
 linkedin_username: ali-ibrahim-2ba22a15b
-codeforces_username: "C137"
 excerpt_separator: <!--more-->
+
+sidebar:
+  subtitle: Full stack software engineer
+  company:
+    name: Freiheit.com technologies GmbH
+    url: https://freiheit.com/
+    since: July 2023
+  location: Hamburg, Germany
+  intro_link:
+    text: Check out my posts
+    url: /
+  links:
+    - label: Email
+      url: mailto:ali103575@gmail.com
+    - label: GitHub
+      url: https://github.com/ali-ibrahim137
+    - label: LinkedIn
+      url: https://www.linkedin.com/in/ali-ibrahim-2ba22a15b/
 
 # Build settings
 theme: minima
@@ -75,5 +94,5 @@ include:
 minima:
   include_custom_styles: true
 
-paginate: 5
+paginate: 10
 paginate_path: "/p/:num/"
