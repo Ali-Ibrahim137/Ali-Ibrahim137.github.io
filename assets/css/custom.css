@@ -2,6 +2,10 @@ body {
   overflow-x: hidden;
 }
 
+:root {
+  --sticky-header-offset: 5.75rem;
+}
+
 html,
 body {
   max-width: 100%;
@@ -10,7 +14,7 @@ body {
 .site-layout {
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: minmax(230px, 280px) minmax(0, 1fr);
+  grid-template-columns: minmax(230px, 280px) minmax(0, 1fr) minmax(220px, 280px);
   gap: clamp(1.5rem, 2.5vw, 3rem);
   max-width: 1840px;
   width: min(98vw, 1840px);
@@ -22,13 +26,30 @@ body {
   min-width: 0;
 }
 
+.archive-sidebar {
+  align-self: start;
+  position: sticky;
+  top: var(--sticky-header-offset);
+  max-height: calc(100vh - var(--sticky-header-offset) - 1rem);
+  overflow-y: auto;
+  min-width: 0;
+  padding-left: 1rem;
+  border-left: 1px solid #e0e0e0;
+  color: #444;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
 .site-sidebar {
   color: #444;
   font-size: 0.98rem;
   line-height: 1.55;
   align-self: start;
   position: sticky;
-  top: 1.5rem;
+  top: var(--sticky-header-offset);
+  max-height: calc(100vh - var(--sticky-header-offset) - 1rem);
+  overflow-y: auto;
+  padding-right: 0.25rem;
 }
 
 .site-sidebar > * {
@@ -119,20 +140,6 @@ body {
   padding-top: 2rem;
 }
 
-.homepage-sidebar {
-  flex: 0 0 clamp(18rem, 21vw, 23rem);
-  min-width: 0;
-  font-size: 0.85rem;
-  border-left: 1px solid #e0e0e0;
-  padding-left: 1rem;
-  box-sizing: border-box;
-  align-self: flex-start;
-  max-height: calc(100vh - 3rem);
-  overflow-y: auto;
-  position: sticky;
-  top: 1.5rem;
-}
-
 .post-homepage-divider {
   margin: 2rem auto;
   width: 80%;
@@ -195,7 +202,7 @@ body {
 
 .blog-archive {
   font-size: 0.95rem;
-  margin-top: 2rem;
+  margin-top: 0;
   overflow-wrap: anywhere;
 }
 
@@ -245,7 +252,14 @@ body {
 }
 
 .site-header {
-  padding-top: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid #e6e6e6;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(10px);
 }
 
 .site-title {
@@ -363,6 +377,13 @@ body {
   border-radius: 8px;
   background: #f8fbfb;
   box-shadow: 0 10px 24px rgba(35, 73, 77, 0.07);
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.skill-card:hover {
+  border-color: #bdd6d6;
+  box-shadow: 0 14px 30px rgba(35, 73, 77, 0.11);
+  transform: translateY(-2px);
 }
 
 .skill-card h3 {
@@ -394,6 +415,16 @@ body {
   font-weight: 600;
   line-height: 1.35;
   box-shadow: 0 6px 14px rgba(35, 73, 77, 0.06);
+  cursor: default;
+  transition: background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease, color 150ms ease, transform 150ms ease;
+}
+
+.skill-tags li:hover {
+  border-color: #8fbfc0;
+  background: #eef8f8;
+  color: #1f6f73;
+  box-shadow: 0 9px 18px rgba(35, 73, 77, 0.12);
+  transform: translateY(-1px);
 }
 
 @media (max-width: 720px) {
@@ -567,15 +598,6 @@ body {
     flex: 1 1 100%;
   }
 
-  .homepage-sidebar {
-    flex: 1 1 100%;
-    border-left: none;
-    padding-left: 0;
-    margin-top: 2rem;
-    max-height: none;
-    overflow-y: visible;
-    position: static;
-  }
 }
 
 @media (min-width: 1201px) {
@@ -583,9 +605,6 @@ body {
     gap: 2rem;
   }
 
-  .homepage-sidebar {
-    flex-basis: 20rem;
-  }
 }
 
 @media (max-width: 1050px) {
@@ -622,6 +641,16 @@ body {
   .sidebar-intro-link,
   .sidebar-contact-list {
     grid-column: 2;
+  }
+
+  .archive-sidebar {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 1.25rem;
   }
 }
 
