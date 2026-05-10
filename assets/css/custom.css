@@ -2,6 +2,11 @@ body {
   overflow-x: hidden;
 }
 
+html,
+body {
+  max-width: 100%;
+}
+
 .site-layout {
   box-sizing: border-box;
   display: grid;
@@ -24,6 +29,10 @@ body {
   align-self: start;
   position: sticky;
   top: 1.5rem;
+}
+
+.site-sidebar > * {
+  min-width: 0;
 }
 
 .sidebar-avatar-link {
@@ -71,6 +80,8 @@ body {
   align-items: flex-start;
   gap: 0.45rem;
   margin: 0.55rem 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .sidebar-contact-icon {
@@ -430,7 +441,7 @@ body {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .site-layout {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -438,19 +449,39 @@ body {
 
   .site-sidebar {
     display: grid;
-    grid-template-columns: 96px minmax(0, 1fr);
+    grid-template-columns: minmax(88px, 112px) minmax(0, 1fr);
     column-gap: 1rem;
     align-items: start;
     position: static;
   }
 
   .sidebar-avatar-link {
-    grid-row: span 4;
+    grid-column: 1;
+    grid-row: 1 / span 5;
     margin-bottom: 0;
   }
 
+  .sidebar-name,
+  .sidebar-subtitle,
+  .sidebar-description,
+  .sidebar-intro-link,
   .sidebar-contact-list {
     grid-column: 2;
+  }
+}
+
+@media (max-width: 900px) {
+  .site-layout {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .site-header .wrapper,
+  .site-footer .wrapper {
+    width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
 
   /* Post page mobile styles */
@@ -474,6 +505,24 @@ body {
 }
 
 @media (max-width: 600px) {
+  .site-layout {
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+  }
+
+  .site-sidebar {
+    grid-template-columns: 84px minmax(0, 1fr);
+  }
+
+  .sidebar-name {
+    font-size: 1.05rem;
+  }
+
+  .sidebar-subtitle,
+  .sidebar-description {
+    font-size: 0.88rem;
+  }
+
   .post-homepage-content {
     flex-direction: column;
   }
@@ -483,5 +532,12 @@ body {
   .post .post-content .post-homepage-image img {
     width: 100%;
     max-width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .site-sidebar {
+    grid-template-columns: 72px minmax(0, 1fr);
+    column-gap: 0.8rem;
   }
 }
