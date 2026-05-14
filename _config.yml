@@ -52,6 +52,8 @@ sidebar:
       url: https://github.com/ali-ibrahim137
     - label: LinkedIn
       url: https://www.linkedin.com/in/ali-ibrahim-2ba22a15b/
+    - label: CV
+      url: /assets/files/CV.pdf
 
 # Build settings
 theme: minima

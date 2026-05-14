@@ -326,6 +326,42 @@ body {
   margin: 0.35rem 0;
 }
 
+.cv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  align-items: center;
+  margin-top: 1.35rem;
+}
+
+.cv-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid #1f6f73;
+  border-radius: 6px;
+  background: #1f6f73;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color 150ms ease, border-color 150ms ease, transform 150ms ease;
+}
+
+.cv-link:hover {
+  border-color: #174f52;
+  background: #174f52;
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.cv-actions span {
+  color: #6f6f6f;
+  font-size: 0.95rem;
+}
+
 .about-intro,
 .about-section {
   padding: clamp(1.6rem, 3vw, 2.5rem) 0;
