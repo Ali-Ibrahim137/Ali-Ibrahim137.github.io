@@ -337,23 +337,19 @@ body {
 .cv-link {
   display: inline-flex;
   align-items: center;
-  min-height: 2.5rem;
-  padding: 0.55rem 1rem;
-  border: 1px solid #1f6f73;
-  border-radius: 6px;
-  background: #1f6f73;
-  color: #fff;
-  font-weight: 700;
-  line-height: 1.2;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: rgba(31, 111, 115, 0.1);
+  color: #1f6f73;
+  border: 1px solid rgba(31, 111, 115, 0.2);
+  font-weight: 600;
   text-decoration: none;
-  transition: background-color 150ms ease, border-color 150ms ease, transform 150ms ease;
+  transition: all 150ms ease;
 }
 
 .cv-link:hover {
-  border-color: #174f52;
-  background: #174f52;
-  color: #fff;
-  text-decoration: none;
+  background: rgba(31, 111, 115, 0.18);
+  border-color: rgba(31, 111, 115, 0.4);
   transform: translateY(-1px);
 }
 

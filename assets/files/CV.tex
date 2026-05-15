@@ -1,0 +1,309 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[a4paper,margin=1.35cm]{geometry}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{ifthen}
+\usepackage{iftex}
+\usepackage{tikz}
+\usepackage{fontawesome5}
+\usepackage{xcolor}
+
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\else
+  \usepackage{fontspec}
+  \setmainfont{Latin Modern Sans}
+  \setsansfont{Latin Modern Sans}
+  \newfontfamily\cvEmojiFont{Noto Color Emoji}[Renderer=HarfBuzz]
+\fi
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\renewcommand{\familydefault}{\sfdefault}
+
+\definecolor{cvText}{HTML}{222222}
+\definecolor{cvMuted}{HTML}{5C5C5C}
+\definecolor{cvLine}{HTML}{A7A7A7}
+\definecolor{cvHeader}{HTML}{F3F3F3}
+\definecolor{cvAccent}{HTML}{9A9A9A}
+\definecolor{cvLink}{HTML}{0057B8}
+
+\hypersetup{colorlinks=true,urlcolor=cvLink}
+\color{cvText}
+
+\newcommand{\cvName}{Ali Ibrahim}
+\newcommand{\cvRole}{Full stack software engineer}
+\newcommand{\cvPhotoPath}{photo.jpg}
+\newcommand{\cvEmail}{ali103575@gmail.com}
+\newcommand{\cvWebsite}{https://ali-ibrahim137.github.io/about/}
+\newcommand{\cvLinkedIn}{https://www.linkedin.com/in/ali-ibrahim-2ba22a15b/}
+\newcommand{\cvGithub}{https://github.com/ali-ibrahim137}
+\newcommand{\cvStackOverflow}{https://stackoverflow.com/users/13644377/ali-ibrahim}
+
+\newcommand{\cvField}[2]{\textbf{#1:} #2}
+\newcommand{\cvSep}{\hspace{0.45em}{\color{cvLine}\vrule width 0.45pt height 1.25ex}\hspace{0.45em}}
+\newcommand{\cvIconGap}{\hspace{0.34cm}}
+
+\newcommand{\cvEmailIcon}{%
+  \begin{tikzpicture}[x=1em,y=1em,baseline=-0.18em,line width=0.08em]
+    \draw[cvMuted] (-0.48,-0.32) rectangle (0.48,0.32);
+    \draw[cvMuted] (-0.48,0.32) -- (0,-0.06) -- (0.48,0.32);
+    \draw[cvMuted] (-0.48,-0.32) -- (-0.12,0.02);
+    \draw[cvMuted] (0.48,-0.32) -- (0.12,0.02);
+  \end{tikzpicture}%
+}
+
+\newcommand{\cvLocationIcon}{%
+  \begin{tikzpicture}[x=1em,y=1em,baseline=-0.18em,line width=0.08em]
+    \draw[cvMuted] (0,0.42) .. controls (-0.32,0.42) and (-0.42,0.16) .. (-0.27,-0.1)
+      .. controls (-0.16,-0.31) and (0,-0.5) .. (0,-0.5)
+      .. controls (0,-0.5) and (0.16,-0.31) .. (0.27,-0.1)
+      .. controls (0.42,0.16) and (0.32,0.42) .. (0,0.42);
+    \fill[cvMuted] (0,0.13) circle (0.09);
+  \end{tikzpicture}%
+}
+
+\ifPDFTeX
+  \newcommand{\cvWebIcon}{%
+    \begin{tikzpicture}[x=1em,y=1em,baseline=-0.18em,line width=0.08em]
+      \draw[cvLink] (0,0) circle (0.48);
+      \draw[cvLink] (-0.48,0) -- (0.48,0);
+      \draw[cvLink] (0,-0.48) arc (270:90:0.18 and 0.48);
+      \draw[cvLink] (0,-0.48) arc (270:450:0.18 and 0.48);
+    \end{tikzpicture}%
+  }
+\else
+  \newcommand{\cvWebIcon}{{\cvEmojiFont 🌐}}
+\fi
+
+\newcommand{\cvLinkedInIcon}{%
+  \begin{tikzpicture}[x=1em,y=1em,baseline=-0.18em]
+    \fill[cvMuted,rounded corners=0.08em] (-0.5,-0.5) rectangle (0.5,0.5);
+    \node[text=white,font=\bfseries\tiny] at (0,0) {in};
+  \end{tikzpicture}%
+}
+
+\newcommand{\cvStackOverflowIcon}{%
+  \begin{tikzpicture}[x=1em,y=1em,baseline=-0.18em,line width=0.08em]
+    \draw[cvMuted] (-0.36,-0.38) -- (0.36,-0.38) -- (0.36,-0.14);
+    \draw[cvMuted] (-0.36,-0.38) -- (-0.36,-0.14);
+    \draw[cvMuted] (-0.22,-0.17) -- (0.22,-0.17);
+    \draw[cvMuted] (-0.2,0.02) -- (0.26,-0.05);
+    \draw[cvMuted] (-0.13,0.2) -- (0.28,0.02);
+    \draw[cvMuted] (-0.02,0.38) -- (0.32,0.11);
+  \end{tikzpicture}%
+}
+
+\newcommand{\cvPhoneIcon}{%
+  \begin{tikzpicture}[x=1em,y=1em,baseline=-0.18em,line width=0.08em]
+    \draw[cvMuted,rounded corners=0.07em] (-0.26,-0.5) rectangle (0.26,0.5);
+    \fill[cvMuted] (0,-0.36) circle (0.035);
+    \draw[cvMuted] (-0.1,0.34) -- (0.1,0.34);
+  \end{tikzpicture}%
+}
+
+\newcommand{\cvBriefcaseIcon}{%
+  \begin{tikzpicture}[x=1em,y=1em,baseline=-0.18em,line width=0.08em]
+    \draw[cvMuted,rounded corners=0.05em] (-0.48,-0.28) rectangle (0.48,0.28);
+    \draw[cvMuted] (-0.16,0.28) -- (-0.16,0.42) -- (0.16,0.42) -- (0.16,0.28);
+    \draw[cvMuted] (-0.48,0.05) -- (0.48,0.05);
+  \end{tikzpicture}%
+}
+
+\newcommand{\cvGithubIcon}{%
+  \makebox[1em][c]{\small\faGithub}%
+}
+
+\newcommand{\cvIconLink}[2]{\href{#1}{#2}}
+\newcommand{\cvContactItem}[2]{\makebox[1.3em][c]{#1}\hspace{0.45em}#2}
+\newcommand{\cvContactLink}[2]{\href{#1}{\textcolor{cvText}{#2}}}
+
+\newcommand{\cvPhoto}{%
+  \begin{tikzpicture}
+    \clip (0,0) circle (1.45cm);
+    \IfFileExists{\cvPhotoPath}{%
+      \node at (0,0) {\includegraphics[width=2.9cm,height=2.9cm,keepaspectratio]{\cvPhotoPath}};
+    }{%
+      \fill[cvAccent!20] (-1.45,-1.45) rectangle (1.45,1.45);
+      \node[text=cvMuted,align=center,font=\scriptsize] at (0,0) {PHOTO};
+    }
+    \draw[cvLine,line width=0.7pt] (0,0) circle (1.45cm);
+  \end{tikzpicture}%
+}
+
+\newcommand{\cvHeader}{%
+  \noindent%
+  \begingroup%
+  \setlength{\fboxsep}{0pt}%
+  \colorbox{cvHeader}{%
+    \begin{minipage}{\dimexpr\textwidth-2\fboxsep\relax}
+      \vspace{0.25cm}
+        \begin{minipage}[c]{2.9cm}
+          \centering
+          \cvPhoto
+        \end{minipage}%
+        \hspace{0.35cm}%
+        \begin{minipage}[c]{\dimexpr\textwidth-3.25cm\relax}
+          \vspace{0.05cm}
+        {\fontsize{16}{19}\selectfont\bfseries\color{cvMuted}\cvName{}}\\[0.08cm]
+        {\fontsize{12}{15}\selectfont\bfseries\color{cvMuted}\cvRole{}}
+        \vspace{0.28cm}
+
+        {\color{cvLine}\hrule height 0.7pt}
+        \vspace{0.2cm}
+
+        \begingroup
+        \footnotesize
+        \setlength{\tabcolsep}{0pt}
+        \renewcommand{\arraystretch}{1.38}
+        \begin{tabular}{@{}p{0.49\linewidth}@{\hspace{0.02\linewidth}}p{0.49\linewidth}@{}}
+          \cvContactLink{mailto:\cvEmail}{\cvContactItem{\cvEmailIcon}{\cvEmail}} &
+          \cvContactItem{\cvPhoneIcon}{+49 01758840593} \\
+          \cvContactItem{\cvLocationIcon}{Hamburg, Germany} &
+          \cvContactItem{\cvBriefcaseIcon}{\cvField{Work permit}{Germany}} \\
+          \cvContactLink{\cvLinkedIn}{\cvContactItem{\cvLinkedInIcon}{linkedin.com/in/ali-ibrahim-2ba22a15b}} &
+          \cvContactLink{\cvGithub}{\cvContactItem{\cvGithubIcon}{github.com/Ali-Ibrahim137}} \\
+          \cvContactLink{\cvWebsite}{\cvContactItem{\cvWebIcon}{ali-ibrahim137.github.io}} &
+          \cvContactLink{\cvStackOverflow}{\cvContactItem{\cvStackOverflowIcon}{stackoverflow.com/users/13644377/ali-ibrahim}}
+        \end{tabular}
+        \endgroup
+      \end{minipage}
+      \vspace{0.35cm}
+    \end{minipage}
+  }%
+  \endgroup
+}
+
+\newcommand{\cvSection}[1]{%
+  \vspace{0.38cm}
+  \noindent
+  \makebox[0.38cm][l]{{\color{cvAccent}\Large\textbullet}}%
+  \begin{minipage}[t]{\dimexpr\textwidth-0.38cm\relax}
+    \textbf{\MakeUppercase{#1}}\\[-0.08cm]
+    {\color{cvLine}\rule{\linewidth}{0.55pt}}
+  \end{minipage}
+  \par\vspace{0.24cm}
+}
+
+\newcommand{\cvEmptyBlock}[1][1.0cm]{%
+  \hspace*{0.58cm}%
+  \begin{minipage}{\dimexpr\textwidth-0.72cm\relax}
+    \vspace{#1}
+  \end{minipage}
+}
+
+\newcommand{\cvExperienceEntry}[4]{%
+  \hspace*{0.58cm}%
+  \begin{minipage}{\dimexpr\textwidth-0.72cm\relax}
+    \textbf{\MakeUppercase{#1}}%
+    \ifthenelse{\equal{#2}{}}{}{\hspace{0.25em}-- #2}%
+    \ifthenelse{\equal{#3}{}}{}{\hspace{0.25em}-- #3}%
+    \ifthenelse{\equal{#4}{}}{}{\hspace{0.25em}-- \MakeUppercase{#4}}%
+    \vspace{0.18cm}
+
+    {\color{cvLine}\hrule width 0.48\linewidth height 0.55pt}
+    \vspace{0.18cm}
+
+    \textbf{Team / Project}\\
+    Responsibilities:
+    \begin{itemize}[leftmargin=1.1cm,itemsep=0pt,topsep=0.05cm]
+      \item
+      \item
+      \item
+    \end{itemize}
+  \end{minipage}
+  \vspace{0.22cm}
+}
+
+\newcommand{\cvEducationEntry}[4]{%
+  \hspace*{0.58cm}%
+  \begin{minipage}{\dimexpr\textwidth-0.72cm\relax}
+    #1\hspace{0.25em} #2\\
+    \textbf{\MakeUppercase{#3}}\hspace{0.25em} #4
+  \end{minipage}
+}
+
+\begin{document}
+
+\cvHeader
+
+\cvSection{About me}
+\hspace*{0.58cm}%
+\begin{minipage}{\dimexpr\textwidth-0.72cm\relax}
+  Software engineer with 5 years of experience across backend systems, data engineering, and AI-driven applications. My work spans designing scalable microservices, building data ingestion pipelines, and developing Retrieval-Augmented Generation (RAG) systems using Large Language Models. I have practical experience with technologies such as Qt, React, Spring Boot, and LangChain to build intelligent knowledge retrieval solutions.
+\end{minipage}
+
+\cvSection{Work experience}
+\hspace*{0.58cm}%
+\begin{minipage}{\dimexpr\textwidth-0.72cm\relax}
+  \textbf{FULL STACK SOFTWARE ENGINEER -- FREIHEIT.COM TECHNOLOGIES GMBH}
+  \hspace{0.25em}-- July 2023 -- Current
+  \hspace{0.25em}-- HAMBURG, GERMANY
+
+  \vspace{0.16cm}
+  {\color{cvLine}\hrule width 0.48\linewidth height 0.55pt}
+  \vspace{0.18cm}
+
+  \textbf{Product Data Team}\\
+  In this team, we were building an e-commerce system for a leading European company in consumer goods and retail. As a member of the Product Data Team, I was responsible for importing data from external source systems, processing it through a pipeline, aggregating it, and delivering it via a REST API to consumers, using a microservices-based architecture. My key responsibilities included:
+  \begin{itemize}[leftmargin=0.9cm,itemsep=0pt,topsep=0.04cm]
+    \item Refining, implementing, and maintaining a microservices-based codebase using Kotlin and Spring Boot.
+    \item Managing and provisioning infrastructure with Terraform.
+    \item Serving as the team's ``Bug Dispatcher,'' acting as the first point of contact for bug reports, resolving issues, or assigning them to the appropriate developer.
+  \end{itemize}
+
+  \vspace{0.12cm}
+  \textbf{CTS Knowledge Search Team}\\
+  The project focused on AI-assisted knowledge retrieval for engineering documentation and troubleshooting workflows. We worked with large collections of technical manuals, engineering drawings, support cases, spreadsheets, and internal documentation. My responsibilities included:
+  \begin{itemize}[leftmargin=0.9cm,itemsep=0pt,topsep=0.04cm]
+    \item Processing and normalizing data from heterogeneous sources, including documents, spreadsheets, technical drawings, and metadata.
+    \item Designing ingestion pipelines to index and structure data for efficient retrieval.
+    \item Working with Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG) approaches to improve knowledge discovery and question-answering over internal datasets.
+    \item Responsible for maintaining the application by contributing to both LangChain backend and React frontend.
+    \item Mentoring and supporting a new team member during his onboarding process.
+  \end{itemize}
+
+  \vspace{0.2cm}
+  \textbf{RESEARCH ENGINEER -- SCASE LTD}
+  \hspace{0.25em}-- November 2020 -- December 2022
+  \hspace{0.25em}-- LATTAKIA, SYRIA
+
+  \vspace{0.16cm}
+  {\color{cvLine}\hrule width 0.48\linewidth height 0.55pt}
+  \vspace{0.18cm}
+
+  \textbf{Sensor Tooling Team}\\
+  Collaborating on Intenta S-2000 Sensor. Responsibilities:
+  \begin{itemize}[leftmargin=0.9cm,itemsep=0pt,topsep=0.04cm]
+    \item Building internal and external tools for sensor integration and configuration using Qt and Angular frameworks.
+    \item Contributed to the development of various services as part of the sensor's firmware.
+    \item Developed robust C++ libraries for integration with sensor tools and services.
+  \end{itemize}
+\end{minipage}
+
+\cvSection{Education}
+\hspace*{0.58cm}%
+\begin{minipage}{\dimexpr\textwidth-0.72cm\relax}
+  September 2014 -- March 2020 \hspace{0.25em} Latakia, Syria\\
+  \textbf{COMMUNICATION AND ELECTRONICS ENGINEERING}, Tishreen University
+\end{minipage}
+
+\vspace{0.12cm}
+{\color{cvLine}\hspace*{0.58cm}\rule{\dimexpr\textwidth-0.72cm\relax}{0.55pt}}
+
+\cvSection{Skills}
+\hspace*{0.58cm}%
+\begin{minipage}{\dimexpr\textwidth-0.72cm\relax}
+  \setlist[itemize]{nosep, leftmargin=*}
+  \raggedright
+  React \cvSep Spring Boot \cvSep LangChain \cvSep PostgreSQL \cvSep C++ \cvSep Python \cvSep Kotlin \cvSep Go \cvSep AWS \cvSep GCP \cvSep Open Search \cvSep GitLab CI/CD \cvSep kubernetes \cvSep LLM \cvSep RAG \cvSep Microservices \cvSep Problem Solving (Problem Analysis)
+\end{minipage}
+\cvEmptyBlock[0.85cm]
+
+\end{document}
