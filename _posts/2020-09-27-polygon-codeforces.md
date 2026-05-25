@@ -5,6 +5,7 @@ date:   2020-09-27
 categories: competitive-programming
 permalink: /polygon-codeforces-tutorial.html
 previewImage: /assets/img/previewImages/polygon-logo.webp
+isVisible: true
 ---
 # What is Polygon
 According to Polygon itself,  The mission of Polygon is to provide platform for creation of programming contest problems. Polygon supports the whole development cycle:

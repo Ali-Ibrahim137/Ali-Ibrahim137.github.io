@@ -5,6 +5,7 @@ date:   2020-02-26
 categories: competitive-programming
 permalink: /game-theory.html
 previewImage: /assets/img/previewImages/game-theory.png
+isVisible: true
 ---
 
 ## Combinatorial Games

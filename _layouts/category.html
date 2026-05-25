@@ -2,7 +2,8 @@
 layout: default
 ---
 
-{%- assign category_posts = site.posts | where_exp: "post", "post.categories contains page.category" -%}
+{%- assign visible_posts = site.posts | where_exp: "post", "post.isVisible == true" -%}
+{%- assign category_posts = visible_posts | where_exp: "post", "post.categories contains page.category" -%}
 {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
 {%- assign posts_per_page = site.paginate | default: 5 -%}
 

@@ -5,6 +5,7 @@ date:   2020-01-02
 categories: competitive-programming
 permalink: /maximum-independent-set-in-bipartite-graphs.html
 previewImage: /assets/img/previewImages/max-is.png
+isVisible: true
 ---
 # Introduction
 

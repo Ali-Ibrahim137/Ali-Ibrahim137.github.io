@@ -5,6 +5,7 @@ date:   2020-05-06
 categories: software-engineering
 permalink: /autocomplete.html
 previewImage: /assets/img/previewImages/autocomplete.png
+isVisible: true
 ---
 
 ## Autocomplete

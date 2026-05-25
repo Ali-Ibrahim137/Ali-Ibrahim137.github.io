@@ -1,7 +1,8 @@
 <div class="blog-archive">
   <h3>Blog Archive</h3>
   <ul class="archive-tree">
-    {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+    {% assign visible_posts = site.posts | where_exp: "post", "post.isVisible == true" %}
+    {% assign posts_by_year = visible_posts | group_by_exp: "post", "post.date | date: '%Y'" %}
     {% for year in posts_by_year %}
       <li>
         <details {% if forloop.first %} open {% endif %}>
