@@ -60,6 +60,8 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-sitemap
+
 google_analytics: G-YSW7XHR583
 
 markdown: kramdown
