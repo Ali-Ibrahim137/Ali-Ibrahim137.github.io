@@ -198,6 +198,20 @@
   \end{minipage}
 }
 
+\newenvironment{cvBlock}{%
+  \begin{list}{}{%
+    \setlength{\leftmargin}{0.58cm}%
+    \setlength{\rightmargin}{0.14cm}%
+    \setlength{\topsep}{0pt}%
+    \setlength{\partopsep}{0pt}%
+    \setlength{\parsep}{0pt}%
+    \setlength{\itemsep}{0pt}%
+  }%
+  \item[]%
+}{%
+  \end{list}%
+}
+
 \newcommand{\cvExperienceEntry}[4]{%
   \hspace*{0.58cm}%
   \begin{minipage}{\dimexpr\textwidth-0.72cm\relax}
@@ -236,12 +250,11 @@
 \cvSection{About me}
 \hspace*{0.58cm}%
 \begin{minipage}{\dimexpr\textwidth-0.72cm\relax}
-  Software engineer with 5 years of experience across backend systems, data engineering, and AI-driven applications. My work spans designing scalable microservices, building data ingestion pipelines, and developing Retrieval-Augmented Generation (RAG) systems using Large Language Models. I have practical experience with technologies such as Qt, React, Spring Boot, and LangChain to build intelligent knowledge retrieval solutions.
+  Software engineer with over 5 years of experience across web applications, and AI-driven solutions. My work spans designing scalable microservices, building data ingestion pipelines, and developing Retrieval-Augmented Generation (RAG) systems using Large Language Models. I have practical experience with technologies such as React, Spring Boot, and LangChain to build intelligent knowledge retrieval solutions.
 \end{minipage}
 
 \cvSection{Work experience}
-\hspace*{0.58cm}%
-\begin{minipage}{\dimexpr\textwidth-0.72cm\relax}
+\begin{cvBlock}
   \textbf{FULL STACK SOFTWARE ENGINEER -- FREIHEIT.COM TECHNOLOGIES GMBH}
   \hspace{0.25em}-- July 2023 -- Current
   \hspace{0.25em}-- HAMBURG, GERMANY
@@ -250,12 +263,21 @@
   {\color{cvLine}\hrule width 0.48\linewidth height 0.55pt}
   \vspace{0.18cm}
 
-  \textbf{Product Data Team}\\
-  In this team, we were building an e-commerce system for a leading European company in consumer goods and retail. As a member of the Product Data Team, I was responsible for importing data from external source systems, processing it through a pipeline, aggregating it, and delivering it via a REST API to consumers, using a microservices-based architecture. My key responsibilities included:
+  \textbf{Storage And Sync Team}\\
+  The team is responsible of maintaining media types and patient information for a medical application,  My key responsibilities included:
   \begin{itemize}[leftmargin=0.9cm,itemsep=0pt,topsep=0.04cm]
-    \item Refining, implementing, and maintaining a microservices-based codebase using Kotlin and Spring Boot, migrating an old legacy code written in Java.
-    \item Managing and provisioning infrastructure with Terraform.
-    \item Serving as the team's ``Bug Dispatcher,'' acting as the first point of contact for bug reports, resolving issues, or assigning them to the appropriate developer.
+    \item Evaluated and compared end-to-end testing frameworks (Patrol, Playwright, and Flutter testing tools) to select and implement the most suitable E2E testing solution for a Flutter application.
+    \item Refining, implementing, and maintaining a microservices-based codebase using Go.
+  \end{itemize}
+
+  \vspace{0.12cm}
+
+  \textbf{AnalyticsOne Team}\\
+  The team focused on harmonizing different workflows to support engineers and researchers in performing analytical calculations on time-series data. My main responsibilities included:
+  \begin{itemize}[leftmargin=0.9cm,itemsep=0pt,topsep=0.04cm]
+    \item Assisted a PhD researcher in migrating analytical calculations to the cloud by developing orchestrator and worker services in Python and deploying them using Kubernetes.
+    \item Integrated the developed services into an existing platform built with Java and Spring Boot.
+    \item Contributed to refining the integration of multiple tools within the platform to create more streamlined and unified workflows.
   \end{itemize}
 
   \vspace{0.12cm}
@@ -270,15 +292,15 @@
   \end{itemize}
   \vspace{0.12cm}
 
-  \textbf{AnalyticsOne Team}\\
-  The team focused on harmonizing different workflows to support engineers and researchers in performing analytical calculations on time-series data. My main responsibilities included:
+  \textbf{Product Data Team}\\
+  In this team, we were building an e-commerce system for a leading European company in consumer goods and retail. As a member of the Product Data Team, I was responsible for importing data from external source systems, processing it through a pipeline, aggregating it, and delivering it via a REST API to consumers, using a microservices-based architecture. My key responsibilities included:
   \begin{itemize}[leftmargin=0.9cm,itemsep=0pt,topsep=0.04cm]
-    \item Assisted a PhD researcher in migrating analytical calculations to the cloud by developing orchestrator and worker services in Python and deploying them using Kubernetes.
-    \item Integrated the developed services into an existing platform built with Java and Spring Boot.
-    \item Contributed to refining the integration of multiple tools within the platform to create more streamlined and unified workflows.
+    \item Handled the migration of multiple functionalities of a monolithic Java application, to a microservices-based codebase using Kotlin and Spring Boot. Including non EU country specific data, and carefully handle crucial topics such as prices.
+    \item Managing and provisioning infrastructure with Terraform.
+    \item Serving as the team's ``Bug Dispatcher,'' acting as the first point of contact for bug reports, resolving issues, or assigning them to the appropriate developer.
   \end{itemize}
 
-  \vspace{0.2cm}
+  \vspace{1.5cm}
   \textbf{RESEARCH AND DEVELOPMENT ENGINEER -- SCASE LTD}
   \hspace{0.25em}-- November 2020 -- December 2022
   \hspace{0.25em}-- LATTAKIA, SYRIA
@@ -294,9 +316,9 @@
     \item Contributed to the development of various services as part of the sensor's firmware.
     \item Developed robust C++ libraries for integration with sensor tools and services.
   \end{itemize}
-\end{minipage}
+\end{cvBlock}
 
-\vspace{1.00cm}
+\vspace{0.24cm}
 \cvSection{Interests}
 \hspace*{0.58cm}%
 \begin{minipage}{\dimexpr\textwidth-0.72cm\relax}
