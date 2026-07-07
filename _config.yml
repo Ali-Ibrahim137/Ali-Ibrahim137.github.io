@@ -37,10 +37,6 @@ excerpt_separator: <!--more-->
 
 sidebar:
   subtitle: Full stack software engineer
-  company:
-    name: Freiheit.com technologies GmbH
-    url: https://freiheit.com/
-    since: July 2023
   location: Hamburg, Germany
   intro_link:
     text: Check out my posts
