@@ -1,0 +1,655 @@
+{
+  "name": "Codeforces solved-problem buckets",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "be56c28f-4461-4fc2-901d-ffae763e8722",
+      "name": "Start",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -96,
+        -576
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1BXFQbI5Bm56lbDBS2-AmLLeEoAJBLKEL_c0-GNJ2JR8",
+          "mode": "list",
+          "cachedResultName": "Codeforces users",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1BXFQbI5Bm56lbDBS2-AmLLeEoAJBLKEL_c0-GNJ2JR8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1BXFQbI5Bm56lbDBS2-AmLLeEoAJBLKEL_c0-GNJ2JR8/edit#gid=0"
+        },
+        "options": {}
+      },
+      "id": "d2300ad7-8c48-44cd-b558-8582a5fee683",
+      "name": "Get Rows",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        144,
+        -576
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "MP9G4yzyPTZJ7S3K",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://codeforces.com/api/user.info",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "handles",
+              "value": "={{ $json.handle }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "97ffda48-a882-454f-a5e2-21b632aca970",
+      "name": "Codeforces user.info",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        672,
+        -560
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "url": "=https://codeforces.com/api/user.status?handle={{ $('Loop Over Handles').item.json.handle }}",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1
+            }
+          }
+        }
+      },
+      "id": "22a79520-96ab-4979-bdf1-fc943c0b6fdd",
+      "name": "Codeforces user.status",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        944,
+        -576
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2ab0c411-5668-42c8-b7ee-81f27a2422dc",
+              "name": "result",
+              "value": "={{ $json.result.map(s => ({ verdict: s.verdict, name: s.problem.name, rating: s.problem.rating, handle: s.author.members[0].handle })) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6b5c42a6-f6e7-4c6f-8a44-5247d0c50f73",
+      "name": "Ignore unused fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        1200,
+        -592
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5493a72b-9c95-40cb-82fe-015c883c57ef",
+              "name": "result",
+              "value": "={{ $json.result.map(s => ({ verdict: s.verdict, name: s.name, rating: s.rating, handle: s.handle, problem_id: s.name + \" \" + String(s.rating) })) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f1f213c6-a56d-466a-8d4e-f028f3e292cd",
+      "name": "Add problem_id",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        1392,
+        -592
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "result",
+        "options": {}
+      },
+      "id": "affc10b8-25c7-41e6-b534-fd86e1ee02ff",
+      "name": "Split Submissions",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1568,
+        -592
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "verdict-ok",
+              "leftValue": "={{ $json.verdict }}",
+              "rightValue": "OK",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "12326d76-7631-435a-807b-905457e452ee",
+      "name": "Verdict OK",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        1792,
+        -592
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "function emptyGroup() {\n  return {\n    seen: new Set(),\n    solvedCount: 0,\n    buckets: {\n      r0_1200: 0,\n      r1200_1400: 0,\n      r1400_1600: 0,\n      r1600_1900: 0,\n      r1900_2100: 0,\n      r2100_2400: 0,\n      r2400_2700: 0,\n      r2700_3000: 0,\n      r3000_plus: 0,\n    },\n  };\n}\n\n// Build a profile map (handle -> user.info result) so every handle gets a row.\nconst profiles = {};\nfor (const it of $('Codeforces user.info').all()) {\n  const p = (it.json.result && it.json.result[0]) ? it.json.result[0] : null;\n  if (p && p.handle) profiles[p.handle] = p;\n}\n\n// Seed groups from all known handles so a handle with no OK problems still updates with zeros.\nconst groups = {};\nfor (const handle of Object.keys(profiles)) {\n  groups[handle] = emptyGroup();\n}\n\n// Aggregate the already-filtered (verdict OK) submission items.\n// After \"Add problem_id\" each item is flat: { verdict, name, rating, handle, problem_id }.\nfor (const item of $input.all()) {\n  const sub = item.json;\n  const handle = sub.handle || null;\n  if (!handle) continue;\n  if (!groups[handle]) groups[handle] = emptyGroup();\n  const rating = sub.rating;\n  const problemId = sub.problem_id;\n  if (groups[handle].seen.has(problemId)) continue;\n  groups[handle].seen.add(problemId);\n  if (rating === undefined || rating === null) continue;\n  const b = groups[handle].buckets;\n  groups[handle].solvedCount++;\n  if (rating < 1200) b.r0_1200++;\n  else if (rating < 1400) b.r1200_1400++;\n  else if (rating < 1600) b.r1400_1600++;\n  else if (rating < 1900) b.r1600_1900++;\n  else if (rating < 2100) b.r1900_2100++;\n  else if (rating < 2400) b.r2100_2400++;\n  else if (rating < 2700) b.r2400_2700++;\n  else if (rating < 3000) b.r2700_3000++;\n  else b.r3000_plus++;\n}\n\nconst out = [];\nfor (const handle of Object.keys(groups)) {\n  const p = profiles[handle] || {};\n  out.push({\n    json: {\n      handle: handle,\n      firstName: p.firstName,\n      lastName: p.lastName,\n      rank: p.rank,\n      maxRank: p.maxRank,\n      rating: p.rating,\n      maxRating: p.maxRating,\n      solvedCount: groups[handle].solvedCount,\n      ...groups[handle].buckets,\n    },\n  });\n}\nreturn out;"
+      },
+      "id": "0bd40bca-c802-44b3-abbe-0bffe809b8f4",
+      "name": "Compute Buckets",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2016,
+        -592
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1BXFQbI5Bm56lbDBS2-AmLLeEoAJBLKEL_c0-GNJ2JR8",
+          "mode": "list",
+          "cachedResultName": "Codeforces users",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1BXFQbI5Bm56lbDBS2-AmLLeEoAJBLKEL_c0-GNJ2JR8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1BXFQbI5Bm56lbDBS2-AmLLeEoAJBLKEL_c0-GNJ2JR8/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "handle": "={{ $json.handle }}",
+            "firstName": "={{ $json.firstName }}",
+            "lastName": "={{ $json.lastName }}",
+            "rank": "={{ $json.rank || \"\" }}",
+            "maxRank": "={{ $json.maxRank || \"\" }}",
+            "rating": "={{ $json.rating  || \"\" }}",
+            "maxRating": "={{ $json.maxRating || \"\" }}",
+            "r0_1200": "={{ $json.r0_1200 }}",
+            "r1200_1400": "={{ $json.r1200_1400 }}",
+            "r1400_1600": "={{ $json.r1400_1600 }}",
+            "r1600_1900": "={{ $json.r1600_1900 }}",
+            "r1900_2100": "={{ $json.r1900_2100 }}",
+            "r2100_2400": "={{ $json.r2100_2400 }}",
+            "r2400_2700": "={{ $json.r2400_2700 }}",
+            "r2700_3000": "={{ $json.r2700_3000 }}",
+            "r3000_plus": "={{ $json.r3000_plus }}",
+            "row_number": 0,
+            "solvedCount": "={{ $json.solvedCount }}"
+          },
+          "matchingColumns": [
+            "handle"
+          ],
+          "schema": [
+            {
+              "id": "handle",
+              "displayName": "handle",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "firstName",
+              "displayName": "firstName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "lastName",
+              "displayName": "lastName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "rank",
+              "displayName": "rank",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "maxRank",
+              "displayName": "maxRank",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "rating",
+              "displayName": "rating",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "maxRating",
+              "displayName": "maxRating",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "solvedCount",
+              "displayName": "solvedCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "r0_1200",
+              "displayName": "r0_1200",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "r1200_1400",
+              "displayName": "r1200_1400",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "r1400_1600",
+              "displayName": "r1400_1600",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "r1600_1900",
+              "displayName": "r1600_1900",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "r1900_2100",
+              "displayName": "r1900_2100",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "r2100_2400",
+              "displayName": "r2100_2400",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "r2400_2700",
+              "displayName": "r2400_2700",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "r2700_3000",
+              "displayName": "r2700_3000",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "r3000_plus",
+              "displayName": "r3000_plus",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "8f7cc336-3da7-4d70-91e2-5ac8c73877df",
+      "name": "Update Rows",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2096,
+        -336
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "MP9G4yzyPTZJ7S3K",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b1a1c0de-0000-4000-8000-000000000001",
+      "name": "Loop Over Handles",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        400,
+        -576
+      ]
+    },
+    {
+      "parameters": {
+        "errorMessage": "=Codeforces user.info API call failed for handle \"{{ $('Loop Over Handles').item.json.handle }}\": {{ (typeof $json.error === 'string' ? $json.error : ($json.error && ($json.error.message || JSON.stringify($json.error)))) || $json.message || 'unknown error' }}"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        784,
+        -336
+      ],
+      "id": "42a44b1c-3b81-4aa2-b457-8d7c698429c0",
+      "name": "Codeforces user.info Error",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "errorMessage": "=Codeforces user.status API call failed for handle \"{{ $('Loop Over Handles').item.json.handle }}\": {{ (typeof $json.error === 'string' ? $json.error : ($json.error && ($json.error.message || JSON.stringify($json.error)))) || $json.message || 'unknown error' }}"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        1056,
+        -336
+      ],
+      "id": "1b040384-f594-4572-9abc-498893124760",
+      "name": "Codeforces user.status Error",
+      "onError": "continueErrorOutput"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Get Rows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Rows": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Handles",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Codeforces user.info": {
+      "main": [
+        [
+          {
+            "node": "Codeforces user.status",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Codeforces user.info Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Codeforces user.status": {
+      "main": [
+        [
+          {
+            "node": "Ignore unused fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Codeforces user.status Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ignore unused fields": {
+      "main": [
+        [
+          {
+            "node": "Add problem_id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add problem_id": {
+      "main": [
+        [
+          {
+            "node": "Split Submissions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Submissions": {
+      "main": [
+        [
+          {
+            "node": "Verdict OK",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verdict OK": {
+      "main": [
+        [
+          {
+            "node": "Compute Buckets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compute Buckets": {
+      "main": [
+        [
+          {
+            "node": "Update Rows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Rows": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Handles",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Handles": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Codeforces user.info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Codeforces user.info Error": {
+      "main": [
+        []
+      ]
+    },
+    "Codeforces user.status Error": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Handles",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "51bdcb69-9a06-4cd4-a23b-3ed3fc43a426",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "7ac059f8c890cfa9acba47aed07ba0b7ccbd0877d0edfef678374e577a240821"
+  },
+  "nodeGroups": [],
+  "id": "zEVvKgFTiAptt0A5",
+  "tags": []
+}
