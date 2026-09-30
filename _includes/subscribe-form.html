@@ -24,6 +24,13 @@
       >
       <button type="submit">{{ subscribe.button | default: "Subscribe" | escape }}</button>
     </form>
-    <a class="subscribe-rss-link" href="{{ '/feed.xml' | relative_url }}">RSS feed</a>
+    <div class="subscribe-links">
+      {%- if subscribe.unsubscribe_url -%}
+        <a class="unsubscribe-link" href="{{ subscribe.unsubscribe_url }}" target="_blank" rel="noopener">
+          {{ subscribe.unsubscribe_text | default: "Manage or unsubscribe" | escape }}
+        </a>
+      {%- endif -%}
+      <a class="subscribe-rss-link" href="{{ '/feed.xml' | relative_url }}">RSS feed</a>
+    </div>
   </section>
 {%- endif -%}

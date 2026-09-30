@@ -268,9 +268,39 @@ body {
   border-color: #2858b8;
 }
 
+.subscribe-links {
+  display: grid;
+  gap: 0.45rem;
+  margin-top: 0.7rem;
+}
+
+.unsubscribe-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.48rem 0.6rem;
+  border: 1px solid #d4d4d4;
+  border-radius: 6px;
+  color: #444;
+  background: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+}
+
+.unsubscribe-link:hover {
+  border-color: #b8b8b8;
+  background: #f7f7f7;
+  color: #222;
+  text-decoration: none;
+}
+
 .subscribe-rss-link {
   display: inline-block;
-  margin-top: 0.7rem;
   font-size: 0.85rem;
 }
 
