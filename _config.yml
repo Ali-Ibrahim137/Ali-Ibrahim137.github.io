@@ -67,6 +67,7 @@ plugins:
   - jekyll-sitemap
 
 google_analytics: G-YSW7XHR583
+follow_it_verification_code: EGPtk5NCufNHFKFavwyA
 
 markdown: kramdown
 kramdown:
