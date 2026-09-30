@@ -1,0 +1,29 @@
+{%- assign subscribe = site.subscribe -%}
+{%- if subscribe.enabled != false -%}
+  <section class="subscribe-widget" aria-labelledby="subscribe-widget-title">
+    <h3 id="subscribe-widget-title">{{ subscribe.title | default: "Subscribe" | escape }}</h3>
+    {%- if subscribe.description -%}
+      <p>{{ subscribe.description | escape }}</p>
+    {%- endif -%}
+    <form
+      class="subscribe-form"
+      action="{{ subscribe.action_url | default: 'https://api.follow.it/subscribe' }}"
+      method="post"
+      target="_blank"
+      accept-charset="UTF-8"
+    >
+      <input type="hidden" name="action" value="followPub">
+      <label class="visually-hidden" for="subscribe-email">Email address</label>
+      <input
+        id="subscribe-email"
+        type="email"
+        name="email"
+        autocomplete="email"
+        placeholder="{{ subscribe.placeholder | default: 'Email address' | escape }}"
+        required
+      >
+      <button type="submit">{{ subscribe.button | default: "Subscribe" | escape }}</button>
+    </form>
+    <a class="subscribe-rss-link" href="{{ '/feed.xml' | relative_url }}">RSS feed</a>
+  </section>
+{%- endif -%}

@@ -51,6 +51,14 @@ sidebar:
     - label: CV
       url: /assets/files/CV.pdf
 
+subscribe:
+  enabled: true
+  title: Subscribe
+  description: Get new articles by email.
+  action_url: https://api.follow.it/subscription-form/M2NzRHNld0d4UzV4TDhBcjJXN2QvTEhYVXRCRngrSlRwRHhYNXc0ZVZGQ2tSU2xvSksrdzEwalc5bVQ0MTM0VnBsbXNOUVU3eUJQd0x0U28vczI0L3lpQkhuMUhIZ0ZVdTlQQm16M1FNSGt3U25HVHN6MmJwS3ZJcXkwOVlrNDF8bUVYN1hEQTZQeXMzRld4bDI2cXlWVHVRUWE3NHgrTG1uNWh0M0dFSmZ2Yz0=/8
+  placeholder: Email address
+  button: Subscribe
+
 # Build settings
 theme: minima
 plugins:

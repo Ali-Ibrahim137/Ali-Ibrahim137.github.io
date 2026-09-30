@@ -206,6 +206,86 @@ body {
   overflow-wrap: anywhere;
 }
 
+.subscribe-widget {
+  margin-bottom: 1.35rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.subscribe-widget h3 {
+  margin: 0 0 0.45rem;
+  color: #222;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.subscribe-widget p {
+  margin: 0 0 0.75rem;
+  color: #555;
+  font-size: 0.88rem;
+}
+
+.subscribe-form {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.subscribe-form input[type="email"] {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid #d7d7d7;
+  border-radius: 6px;
+  background: #fff;
+  color: #222;
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.subscribe-form input[type="email"]:focus {
+  outline: none;
+  border-color: #3366cc;
+  box-shadow: 0 0 0 3px rgba(51, 102, 204, 0.12);
+}
+
+.subscribe-form button {
+  width: 100%;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid #2f5fb3;
+  border-radius: 6px;
+  background: #3366cc;
+  color: #fff;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.3;
+  cursor: pointer;
+}
+
+.subscribe-form button:hover {
+  background: #2858b8;
+  border-color: #2858b8;
+}
+
+.subscribe-rss-link {
+  display: inline-block;
+  margin-top: 0.7rem;
+  font-size: 0.85rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .archive-tree {
   margin-left: 0;
   padding-left: 1rem;
