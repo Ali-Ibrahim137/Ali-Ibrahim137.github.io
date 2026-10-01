@@ -1,0 +1,26 @@
+---
+layout: default
+title: Timeline
+permalink: /timeline/
+---
+
+<div class="timeline-page">
+  <section class="timeline-intro">
+    <h1>Timeline</h1>
+    <p>A living timeline of personal, academic, and career milestones.</p>
+  </section>
+
+  <section class="life-timeline" aria-label="Life events timeline">
+    {% assign events = site.data.timeline | sort: 'date' %}
+    {% for event in events %}
+    <article class="timeline-event" tabindex="0">
+      <div class="timeline-marker" aria-hidden="true"></div>
+      <div class="timeline-card">
+        <time datetime="{{ event.date | escape }}">{{ event.date | date: '%B %Y' }}</time>
+        <h2>{{ event.title | escape }}</h2>
+        <p>{{ event.description | escape }}</p>
+      </div>
+    </article>
+    {% endfor %}
+  </section>
+</div>

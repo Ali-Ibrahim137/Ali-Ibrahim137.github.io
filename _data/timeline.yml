@@ -1,0 +1,54 @@
+- date: "2014-09-01"
+  title: Started University
+  description: |-
+    I enrolled in the Telecommunications and Electronics department at Tishreen University's Faculty of Mechanical and Electrical Engineering in my home country, Syria.
+    During my studies, competitive programming and ICPC contests sparked my interest in software engineering.
+
+- date: "2019-11-20"
+  title: Competed at ACPC
+  description: |-
+    This was my first trip outside Syria. I had previously competed in the regional contest in 2017, participating remotely from a site in Syria.
+    We did reasonably well, though we felt we could have done better.
+
+- date: "2020-03-01"
+  title: Graduated from University
+  description: |-
+    I graduated with a GPA of 3.16 out of 4.0
+
+- date: "2020-11-01"
+  title: Started My First Job at SCASE
+  description: |-
+    After graduation, I joined SCASE Ltd in Syria as a Research and Development Engineer, developing tools and services for the Intenta S-2000 sensor platform.
+
+- date: "2021-01-01"
+  title: Started a Master's Program
+  description: |-
+    While working full time, I also began a full-time master's program in Telecommunications.
+    I passed eight of eleven courses in my first year, but later left the program to pursue an opportunity in Germany.
+
+- date: "2022-12-31"
+  title: Left SCASE
+  description: |-
+    After two years and two months at SCASE, I left my role to prepare for a move abroad.
+    Years of civil war had made life in Syria increasingly difficult, and I decided it was time to leave my home country.
+
+- date: "2023-01-07"
+  title: Moved to Dubai
+  description: |-
+    Dubai was the most accessible option for leaving Syria. I spent two months there looking for work and eventually found an opportunity in Germany.
+
+- date: "2023-06-23"
+  title: Moved to Germany and Joined Freiheit.com
+  description: |-
+    I moved to Germany and joined Freiheit.com Technologies GmbH as a full-stack software engineer, working with multiple teams and international clients.
+    Settling in a new country and working on projects across different technology stacks made this one of the most formative experiences of my life.
+
+- date: "2026-06-17"
+  title: Resigned from Freiheit.com
+  description: |-
+    In June 2026, I submitted my resignation. After nearly three years with the company, I felt ready for a change.
+
+- date: "2026-10-01"
+  title: Looking for My Next Role
+  description: |-
+    After completing my notice period, I am now looking for my next opportunity in software engineering.
