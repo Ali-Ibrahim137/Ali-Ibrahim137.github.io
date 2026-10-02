@@ -5,9 +5,14 @@ date:   2020-01-02
 categories: competitive-programming
 permalink: /maximum-independent-set-in-bipartite-graphs.html
 previewImage: /assets/img/previewImages/max-is.png
+image: /assets/img/previewImages/max-is.png
+description: "Find a maximum independent set in a bipartite graph using maximum matching and minimum vertex cover, with explanations and C++ implementations."
+last_modified_at: 2026-10-02
 isVisible: true
 ---
-# Introduction
+This tutorial connects maximum independent sets, minimum vertex covers, and maximum matching in bipartite graphs. It explains the ideas and implements matching with max flow and augmenting paths in C++.
+
+## Introduction to Independent Sets
 
 The title contains a lot of terms that should be explained separately before we start, given an undirected graph $$G = (V, E)$$ we define the following terms:
 

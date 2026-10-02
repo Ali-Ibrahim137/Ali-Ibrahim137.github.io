@@ -2,7 +2,15 @@
 layout: default
 ---
 
-<article class="post blog-post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="post blog-post h-entry" itemscope itemtype="https://schema.org/BlogPosting">
+  <meta itemprop="mainEntityOfPage" content="{{ page.url | absolute_url }}">
+  <meta itemprop="image" content="{{ page.image | absolute_url }}">
+  <meta itemprop="description" content="{{ page.description | escape }}">
+  <meta itemprop="dateModified" content="{{ page.last_modified_at | default: page.date | date_to_xmlschema }}">
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+    <meta itemprop="name" content="{{ site.author | escape }}">
+    <link itemprop="url" href="{{ '/about/' | absolute_url }}">
+  </span>
 
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
@@ -18,7 +26,7 @@ layout: default
         {%- for category in page.categories -%}
           {%- assign category_slug = category | slugify -%}
           {%- assign category_url = '/categories/' | append: category_slug | append: '/' -%}
-          <a href="{{ category_url | relative_url }}" class="category-badge">
+          <a href="{{ category_url | relative_url }}" class="category-badge" itemprop="articleSection">
             {{ category }}
           </a>
         {%- endfor -%}
@@ -29,4 +37,5 @@ layout: default
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
   </div>
+  {%- include related-posts.html -%}
 </article>

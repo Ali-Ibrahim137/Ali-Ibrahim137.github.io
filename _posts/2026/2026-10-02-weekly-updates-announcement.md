@@ -1,14 +1,19 @@
 ---
 layout: post
-title: "Starting Weekly Updates"
+title: "Starting Weekly Updates on Software, Books, and Personal Projects"
 date: 2026-10-02
 categories: weekly-updates
 permalink: /weekly-updates-announcement.html
 previewImage: /assets/img/previewImages/weekly-updates.png
+image: /assets/img/previewImages/weekly-updates.png
+description: "Why I am starting weekly blog updates to share software projects, books, things I learn, and reflections on work and everyday life."
+last_modified_at: 2026-10-02
 isVisible: true
 ---
 
-## Motivation
+I am starting weekly updates to share what I learn, read, build, and ship. Alongside technical articles, these posts will include books, personal projects, and reflections on work and everyday life.
+
+## Why Start Weekly Blog Updates?
 
 I shared my first blog in December 2019. Back then, the intention was only to share posts about technical topics, and I've shared a couple of blogs, mostly related to competitive programming.
 
@@ -16,7 +21,7 @@ Recently, I decided to make a shift in what I post. I want to share about differ
 
 <!--more-->
 
-## What to expect?
+## What to Expect in the Weekly Updates
 
 Anything I can share publicly. Usually, I am very comfortable sharing different stuff on social media. The idea is to share small things I like, but that are not worth writing a full blog post about. For example, I recently started reading "Deep learning with Python" by Francois Chollet, and I read something that I really liked:
 
@@ -26,7 +31,7 @@ I could write something like: I was reading this book during the week, and I fou
 
 I can also share small insights, like "This week I learned about this topic" or "I read this book, and here's a short review." (Recently, I finished reading *1984* by George Orwell, and I am planning to write a full blog post about it.) Or I can share what I planned, built, or shipped. For example, I am planning to build a pharmacy management app to help my sister manage her pharmacy, and I can mention that this week I added a certain feature, with details to come in a separate blog post. I could also share that I was approached by a recruiter on LinkedIn and we had an interview, that I had my first freelance client, etc.
 
-## Why I want to do this?
+## What I Hope to Get from Writing Weekly
 
 Basically, I want to achieve a couple of goals:
 

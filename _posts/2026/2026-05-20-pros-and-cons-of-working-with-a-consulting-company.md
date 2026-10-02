@@ -1,14 +1,19 @@
 ---
 layout: post
-title: "Pros and Cons of Working with a Consulting Company"
+title: "Pros and Cons of Working at a Software Consulting Company"
 date: 2026-05-20
 categories: career
 permalink: /pros-and-cons-of-working-with-a-consulting-company.html
 previewImage: /assets/img/previewImages/consulting.png
+image: /assets/img/previewImages/consulting.png
+description: "A software engineer's perspective on consulting careers: networking, varied projects, entry opportunities, ownership, and frequent client changes."
+last_modified_at: 2026-10-02
 isVisible: true
 ---
 
-## What is a consulting company?
+Working at a software consulting company can offer varied projects and a broad professional network, alongside challenges with ownership and changing clients. Here are the trade-offs I have experienced as a software engineer.
+
+## What Is a Software Consulting Company?
 
 A consulting company is a professional services firm that provides expert advice or specialized delivery capacity to other businesses. For example, if a company has legal issues, it may hire a law firm. If it needs help filing taxes, it may hire an accounting firm. In software development, companies hire consultants for many reasons:
 

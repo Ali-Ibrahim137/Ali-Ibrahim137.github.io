@@ -1,5 +1,7 @@
 ---
 layout: default
+title: Software Engineering, Algorithms, and Career Articles
+description: "Articles by Ali Ibrahim on software engineering, competitive programming, n8n automation, Qt, and life as a full-stack software engineer."
 ---
 
 {%- assign visible_posts = site.posts | where_exp: "post", "post.isVisible == true" -%}
@@ -38,7 +40,7 @@ layout: default
 
             <div class="post-homepage-content">
               <div class="post-homepage-image">
-                <img src="{{ post.previewImage | relative_url }}" alt="Preview" />
+                <img src="{{ post.previewImage | relative_url }}" alt="{{ post.title | escape }}" />
               </div>
               <div class="post-homepage-excerpt">
                 {{ post.excerpt }}
@@ -77,7 +79,7 @@ layout: default
 
             <div class="post-homepage-content">
               <div class="post-homepage-image">
-                <img src="{{ post.previewImage | relative_url }}" alt="Preview" />
+                <img src="{{ post.previewImage | relative_url }}" alt="{{ post.title | escape }}" />
               </div>
               <div class="post-homepage-excerpt">
                 {{ post.excerpt }}

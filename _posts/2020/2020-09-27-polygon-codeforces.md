@@ -1,13 +1,18 @@
 ---
 layout: post
-title:  "Polygon.CodeForces Tutorial"
+title: "Codeforces Polygon Tutorial: Creating Programming Contest Problems"
 date:   2020-09-27
 categories: competitive-programming
 permalink: /polygon-codeforces-tutorial.html
 previewImage: /assets/img/previewImages/polygon-logo.webp
+image: /assets/img/previewImages/polygon-logo.webp
+description: "Create programming contest problems with Codeforces Polygon, including statements, test generators, validators, checkers, and testlib.h examples."
+last_modified_at: 2026-10-02
 isVisible: true
 ---
-# What is Polygon
+Codeforces Polygon supports the full process of creating a programming contest problem. This tutorial walks through statements, generators, validators, checkers, and tests using a sample problem and testlib.h.
+
+## What Is Codeforces Polygon?
 According to Polygon itself,  The mission of Polygon is to provide platform for creation of programming contest problems. Polygon supports the whole development cycle:
 - Problem statement writing.
 - Test data preparing (generators supported).

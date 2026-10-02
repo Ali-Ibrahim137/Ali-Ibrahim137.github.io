@@ -1,14 +1,19 @@
 ---
 layout: post
-title:  "Autocomplete"
+title: "Implementing Autocomplete in C++ with Tries and Ternary Search Trees"
 date:   2020-05-06
 categories: software-engineering
 permalink: /autocomplete.html
 previewImage: /assets/img/previewImages/autocomplete.png
+image: /assets/img/previewImages/autocomplete.png
+description: "Implement prefix-based autocomplete in C++ using tries and ternary search trees, with code examples and a discussion of time and space complexity."
+last_modified_at: 2026-10-02
 isVisible: true
 ---
 
-## Autocomplete
+Autocomplete relies on data structures that can find words by prefix efficiently. This article compares tries and ternary search trees and shows how to implement both approaches in C++.
+
+## How Prefix-Based Autocomplete Works
 Autocomplete is the feature when an application predicts the complete word, after just typing some **prefix** of the word. You must have used autocomplete feature a lot in your life in many area like:
 - Search engines, Google search engine suggests to you an autocomplete feature when you type some text in the search bar, usually sorted by most trends.
 - Emails, as you start writing some **prefix** of the Email address you will get a list of suggestions.

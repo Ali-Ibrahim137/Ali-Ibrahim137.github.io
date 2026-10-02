@@ -5,8 +5,13 @@ date:   2019-12-07
 categories: digital-communications
 permalink: /noise-in-communication-systems.html
 previewImage: /assets/img/previewImages/noise.png
+image: /assets/img/previewImages/noise.png
+description: "Understand thermal noise, Gaussian noise, white noise, and signal-to-noise ratio, and how they affect digital communication systems."
+last_modified_at: 2026-10-02
 isVisible: true
 ---
+
+Noise in communication systems limits transmission rates and makes signals harder to decode. This article explains thermal noise, Gaussian and white noise models, and signal-to-noise ratio (SNR).
 
 The term noise refers to ***unwanted*** electrical signal in electrical systems. This unwanted signal masks the information signal, limiting the transmission rate and affecting the receivers ability to make the correct symbol decision.
 
@@ -68,7 +73,7 @@ As the bandwidth of white noise is infinite, thus its average power is also infi
 
 In real life applications, no noise process can be truly white. however most noise processes in real life can be assumed to be approximately white.
 
-### SNR
+### Signal-to-Noise Ratio (SNR)
 The Signal to Noise Ratio ( SNR ) is defined as the ratio of the signal power ( information signal ) to the power of noise ( unwanted signal ):
 
 > $$SNR = \frac{P_{signal}}{P_{noise}}$$

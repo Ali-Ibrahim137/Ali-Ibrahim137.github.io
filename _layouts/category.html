@@ -45,7 +45,7 @@ layout: default
 
             <div class="post-homepage-content">
               <div class="post-homepage-image">
-                <img src="{{ post.previewImage | relative_url }}" alt="Preview" />
+                <img src="{{ post.previewImage | relative_url }}" alt="{{ post.title | escape }}" />
               </div>
               <div class="post-homepage-excerpt">
                 {{ post.excerpt }}
@@ -84,7 +84,7 @@ layout: default
 
             <div class="post-homepage-content">
               <div class="post-homepage-image">
-                <img src="{{ post.previewImage | relative_url }}" alt="Preview" />
+                <img src="{{ post.previewImage | relative_url }}" alt="{{ post.title | escape }}" />
               </div>
               <div class="post-homepage-excerpt">
                 {{ post.excerpt }}

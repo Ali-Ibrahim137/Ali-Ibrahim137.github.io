@@ -1,13 +1,18 @@
 ---
 layout: post
-title:  "Monotonic Queue"
+title: "Monotonic Queue: Sliding Window Minimum in C++"
 date:   2019-12-08
 categories: competitive-programming
 permalink: /monotonic-queue.html
 previewImage: /assets/img/previewImages/monotonic-queue.png
+image: /assets/img/previewImages/monotonic-queue.png
+description: "Learn how a monotonic queue finds sliding window minimums efficiently, with C++ code and an application to two-dimensional submatrix minimums."
+last_modified_at: 2026-10-02
 isVisible: true
 ---
-## Motivation Problem
+A monotonic queue finds the minimum in each sliding window in linear time. This tutorial develops a C++ implementation and extends it to minimums in two-dimensional submatrices.
+
+## Sliding Window Minimum: The Motivation Problem
 Given $$n \times m$$ matrix $$(1 \le n, m \le 3*10^3)$$ you have to calculate the sum of minimum numbers in all sub-matrices of size $$a\times b$$ with top left corners in $$(i, j)$$ over all $$1 \le i \le n-a+1$$ and $$1 \le j \le m-b+1$$.
 
 <!--more-->

@@ -1,14 +1,19 @@
 ---
 layout: post
-title: "Building an automation workflow with n8n"
+title: "Building an n8n Workflow with the Codeforces API and Google Sheets"
 date: 2026-08-21
 categories: automation n8n
 permalink: /automation-n8n-part1.html
 previewImage: /assets/img/previewImages/n8n.png
+image: /assets/img/previewImages/n8n.png
+description: "Build an n8n automation workflow that fetches Codeforces submissions, calculates student progress metrics, and updates a Google Sheet."
+last_modified_at: 2026-10-02
 isVisible: true
 ---
 
-## Motivation
+This n8n workflow tracks students' competitive programming progress by connecting the Codeforces API to Google Sheets. I walk through fetching submissions, calculating metrics, handling API errors, and updating the sheet.
+
+## Why Automate Codeforces Progress Tracking?
 
 Recently, I started exploring workflow automation tools because I wanted to automate some tasks that I perform regularly. After a short search, I came across several options, including Zapier, Make, and n8n.
 

@@ -1,12 +1,17 @@
 ---
 layout: post
-title:  "Game Theory"
+title: "Game Theory for Competitive Programming: Nim and Sprague-Grundy"
 date:   2020-02-26
 categories: competitive-programming
 permalink: /game-theory.html
 previewImage: /assets/img/previewImages/game-theory.png
+image: /assets/img/previewImages/game-theory.png
+description: "Learn combinatorial game theory for competitive programming, including winning positions, Nim, nim-sums, and the Sprague-Grundy theorem."
+last_modified_at: 2026-10-02
 isVisible: true
 ---
+
+Combinatorial game theory helps determine whether a player can force a win. This tutorial introduces winning and losing positions, Nim, and the Sprague-Grundy theorem through competitive programming examples.
 
 ## Combinatorial Games
 The game is said to be Combinatorial if it satisfies the following conditions:

@@ -1,13 +1,18 @@
 ---
 layout: post
-title:  "How to use Proxy pattern with QNetworkReply?"
+title: "Using the Proxy Pattern with QNetworkReply in Qt"
 date:   2023-01-16
 categories: qt design-patterns
 permalink: /use-proxy-pattern-with-qnetworkreply.html
 previewImage: /assets/img/previewImages/Qt-logo.webp
+image: /assets/img/previewImages/Qt-logo.webp
+description: "Use the proxy design pattern with Qt QNetworkReply to process downloaded data, comparing signals-and-slots and an APIReply wrapper approach."
+last_modified_at: 2026-10-02
 isVisible: true
 ---
-## Background
+The proxy pattern can separate network replies from the code that processes their data. This Qt tutorial compares a signals-and-slots approach with an APIReply wrapper around QNetworkReply.
+
+## Background: Processing Network Replies in Qt
 In a previous project that I worked on, we had to connect to backend API using Qt framework in order to download some files and display some content of these files, this thing might look easily done using **QNetworkAccessManager** and **QNetworkReply**. But we had other things to consider:
 - Size of the downloaded files was large.
 - No file should be stored in the device running the application.

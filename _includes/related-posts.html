@@ -1,0 +1,24 @@
+{%- assign related_count = 0 -%}
+{%- capture related_links -%}
+  {%- for post in site.posts -%}
+    {%- if post.isVisible == true and post.url != page.url -%}
+      {%- assign shares_category = false -%}
+      {%- for category in page.categories -%}
+        {%- if post.categories contains category -%}
+          {%- assign shares_category = true -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if shares_category -%}
+        <li><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></li>
+        {%- assign related_count = related_count | plus: 1 -%}
+        {%- if related_count == 3 -%}{%- break -%}{%- endif -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- if related_count > 0 -%}
+  <nav class="related-posts" aria-label="Related articles">
+    <h2>Related Articles</h2>
+    <ul>{{ related_links }}</ul>
+  </nav>
+{%- endif -%}
