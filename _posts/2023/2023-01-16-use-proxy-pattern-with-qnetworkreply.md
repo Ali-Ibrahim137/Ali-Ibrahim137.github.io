@@ -2,6 +2,7 @@
 layout: post
 title: "Using the Proxy Pattern with QNetworkReply in Qt"
 date:   2023-01-16
+readTime: 15
 categories: qt design-patterns
 permalink: /use-proxy-pattern-with-qnetworkreply.html
 previewImage: /assets/img/previewImages/Qt-logo.webp

@@ -2,6 +2,7 @@
 layout: post
 title: "Implementing Autocomplete in C++ with Tries and Ternary Search Trees"
 date:   2020-05-06
+readTime: 10
 categories: software-engineering
 permalink: /autocomplete.html
 previewImage: /assets/img/previewImages/autocomplete.png

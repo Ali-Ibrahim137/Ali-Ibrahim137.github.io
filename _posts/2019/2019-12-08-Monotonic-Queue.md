@@ -2,6 +2,7 @@
 layout: post
 title: "Monotonic Queue: Sliding Window Minimum in C++"
 date:   2019-12-08
+readTime: 5
 categories: competitive-programming
 permalink: /monotonic-queue.html
 previewImage: /assets/img/previewImages/monotonic-queue.png

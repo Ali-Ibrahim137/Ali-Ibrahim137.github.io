@@ -23,7 +23,13 @@ layout: default
       <div id="all-posts-container" style="display: none;">
         {%- for post in category_posts -%}
           <div class="post-homepage-preview" data-title="{{ post.title | downcase }}">
-            <div class="post-homepage-date">{{ post.date | date: date_format }}</div>
+            <div class="post-homepage-date">
+              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
+              {%- if post.readTime -%}
+                <span aria-hidden="true"> · </span>
+                <span class="post-read-time">{{ post.readTime }} min read</span>
+              {%- endif -%}
+            </div>
 
             <h3 class="post-homepage-title">
               <a class="post-homepage-link" href="{{ post.url | relative_url }}">
@@ -62,7 +68,13 @@ layout: default
       <div id="posts-container" data-posts-per-page="{{ posts_per_page }}">
         {%- for post in category_posts limit: posts_per_page -%}
           <div class="post-homepage-preview" data-title="{{ post.title | downcase }}">
-            <div class="post-homepage-date">{{ post.date | date: date_format }}</div>
+            <div class="post-homepage-date">
+              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
+              {%- if post.readTime -%}
+                <span aria-hidden="true"> · </span>
+                <span class="post-read-time">{{ post.readTime }} min read</span>
+              {%- endif -%}
+            </div>
 
             <h3 class="post-homepage-title">
               <a class="post-homepage-link" href="{{ post.url | relative_url }}">

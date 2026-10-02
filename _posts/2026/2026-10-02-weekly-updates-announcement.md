@@ -2,6 +2,7 @@
 layout: post
 title: "Starting Weekly Updates on Software, Books, and Personal Projects"
 date: 2026-10-02
+readTime: 4
 categories: weekly-updates
 permalink: /weekly-updates-announcement.html
 previewImage: /assets/img/previewImages/weekly-updates.png

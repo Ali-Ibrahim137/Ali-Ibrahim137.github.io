@@ -2,6 +2,7 @@
 layout: post
 title: "Game Theory for Competitive Programming: Nim and Sprague-Grundy"
 date:   2020-02-26
+readTime: 15
 categories: competitive-programming
 permalink: /game-theory.html
 previewImage: /assets/img/previewImages/game-theory.png

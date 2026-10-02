@@ -2,6 +2,7 @@
 layout: post
 title: "Codeforces Polygon Tutorial: Creating Programming Contest Problems"
 date:   2020-09-27
+readTime: 22
 categories: competitive-programming
 permalink: /polygon-codeforces-tutorial.html
 previewImage: /assets/img/previewImages/polygon-logo.webp

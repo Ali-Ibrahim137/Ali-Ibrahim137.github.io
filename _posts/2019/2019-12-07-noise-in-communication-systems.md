@@ -2,6 +2,7 @@
 layout: post
 title:  "Noise in Communication Systems"
 date:   2019-12-07
+readTime: 5
 categories: digital-communications
 permalink: /noise-in-communication-systems.html
 previewImage: /assets/img/previewImages/noise.png

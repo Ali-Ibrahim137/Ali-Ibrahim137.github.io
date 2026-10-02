@@ -19,6 +19,10 @@ layout: default
         {%- assign date_format = site.minima.date_format | default: "%B %-d, %Y" -%}
         {{ page.date | date: date_format }}
       </time>
+      {%- if page.readTime -%}
+        <span aria-hidden="true"> · </span>
+        <span class="post-read-time" itemprop="timeRequired">{{ page.readTime }} min read</span>
+      {%- endif -%}
     </p>
 
     {%- if page.categories -%}

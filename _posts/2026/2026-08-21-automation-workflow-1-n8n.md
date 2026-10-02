@@ -2,6 +2,7 @@
 layout: post
 title: "Building an n8n Workflow with the Codeforces API and Google Sheets"
 date: 2026-08-21
+readTime: 16
 categories: automation n8n
 permalink: /automation-n8n-part1.html
 previewImage: /assets/img/previewImages/n8n.png

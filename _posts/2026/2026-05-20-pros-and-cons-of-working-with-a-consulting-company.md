@@ -2,6 +2,7 @@
 layout: post
 title: "Pros and Cons of Working at a Software Consulting Company"
 date: 2026-05-20
+readTime: 7
 categories: career
 permalink: /pros-and-cons-of-working-with-a-consulting-company.html
 previewImage: /assets/img/previewImages/consulting.png

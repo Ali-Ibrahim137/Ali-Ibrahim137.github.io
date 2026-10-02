@@ -2,6 +2,7 @@
 layout: post
 title: "Stress Testing C++ Solutions for Competitive Programming"
 date:   2020-08-23
+readTime: 18
 categories: competitive-programming
 permalink: /stress-testing.html
 previewImage: /assets/img/previewImages/stress-testing.jpeg
