@@ -34,6 +34,8 @@ Of course the book contains many other interesting ideas, like chapter 5 when th
 
 I am looking forward to what this book still has to offer, I will also try to write a short summary of it.
 
+![Book cover of Tiny Experiments by Anne-Laure Le Cunff]({{site.url}}/assets/img/weekly-updates/26-cw41/tiny-experiments.webp)
+
 ### Are we losing what makes us human?
 
 In case you missed this [post]({{site.url}}/are-we-losing-what-makes-us-human.html), I would highly recommend you to read it.
@@ -44,11 +46,15 @@ Since I am officially unemployed right now and I have more free time, I decided 
 
 I wrote some initial specs for the product, shared them with ChatGPT, he had many extra helpful ideas, and recommended more details. I went back and forth between ChatGPT and Perplexity, refining the specifications and challenging my assumptions until I reached a version that 1) I can do solo in a reasonable time period. 2) Fits within my allocated budget. 3) Aligns well with my career goals.
 
-To be honest I am not sure if this is a solid idea, or if I can make anything out of it, but I would still go for it to showcase my capabilities. I still need to break this down to milestones, epics, and stories in Atlassian. Make some deadlines to commit to, hopefully I can finish all of this next week, and I can soon start with the implementation.
+To be honest I am not sure if this is a solid idea, or if I can make anything out of it, but I would still go for it to showcase my capabilities. I still need to break this down to milestones, epics, and stories in Jira. Make some deadlines to commit to, hopefully I can finish all of this next week, and I can soon start with the implementation.
+
+![Person brainstorming ideas in front of a wall covered with notes and diagrams]({{site.url}}/assets/img/weekly-updates/26-cw41/brainstorming.png)
 
 ### The Buried City: Unearthing the Real Pompeii
 
 I was in Thalia yesterday, and this book caught my attention so I bought it. I've read before "Delusion and Dream in Jensen's Gradiva" by "Sigmund Freud", Gradiva is a novel written by Wilhelm Jensen, it starts by describing the eruption of mount Vesuvius in Naples in AD 79, rest of the events happen in modern life in the city of Pompeii. I loved this novel, so I decided to buy the book. Also I think it would inspire some ideas for something else I am planning to work on later.
+
+![Book cover of The Buried City: Unearthing the Real Pompeii by Gabriel Zuchtriegel]({{site.url}}/assets/img/weekly-updates/26-cw41/the-buried-city.jpg)
 
 ## Conclusion
 
