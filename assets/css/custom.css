@@ -32,6 +32,8 @@ body {
   top: var(--sticky-header-offset);
   max-height: calc(100vh - var(--sticky-header-offset) - 1rem);
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd2df transparent;
   min-width: 0;
   padding-left: 1rem;
   border-left: 1px solid #e0e0e0;
@@ -201,9 +203,18 @@ body {
 }
 
 .blog-archive {
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   margin-top: 0;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+}
+
+.blog-archive h3 {
+  margin: 0 0 0.9rem;
+  color: #333;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .subscribe-widget {
@@ -316,32 +327,160 @@ body {
   border: 0;
 }
 
-.archive-tree {
-  margin-left: 0;
-  padding-left: 1rem;
-}
-
+.archive-tree,
 .archive-tree ul {
   list-style: none;
-  margin-left: 0;
-  padding-left: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .archive-tree li {
-  margin: 0.25rem 0;
+  margin: 0;
+}
+
+.archive-tree > li + li {
+  margin-top: 0.4rem;
 }
 
 .archive-tree summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2.5rem;
+  box-sizing: border-box;
+  padding: 0.45rem 0.65rem;
+  border-radius: 6px;
   cursor: pointer;
+  list-style: none;
   font-weight: 500;
-  color: #3366cc;
+  color: #4b5563;
+  line-height: 1.4;
   white-space: normal;
 }
 
+.archive-tree summary::-webkit-details-marker {
+  display: none;
+}
+
+.archive-tree summary::before {
+  content: "";
+  flex: 0 0 0.35rem;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg);
+}
+
+.archive-tree details[open] > summary::before {
+  transform: rotate(45deg);
+}
+
+.archive-tree .archive-year > summary {
+  background: #f3f5f8;
+  color: #303b4d;
+  font-weight: 600;
+}
+
+.archive-label {
+  flex: 1;
+  min-width: 0;
+}
+
+.archive-count {
+  flex: 0 0 auto;
+  min-width: 1.5rem;
+  box-sizing: border-box;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  background: #e7ecf3;
+  color: #536176;
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.archive-tree .archive-months {
+  margin: 0.35rem 0 0.65rem 0.8rem;
+  padding-left: 0.4rem;
+  border-left: 1px solid #e0e6ef;
+}
+
+.archive-month[open] > summary {
+  color: #2858b8;
+}
+
+.archive-month .archive-count {
+  background: #f0f3f8;
+}
+
+.archive-tree .archive-posts {
+  padding: 0.15rem 0 0.5rem;
+}
+
+.archive-tree .archive-posts li + li {
+  border-top: 1px solid #e8edf4;
+}
+
 .archive-tree a {
+  display: grid;
+  grid-template-columns: 1.65rem minmax(0, 1fr);
+  align-items: start;
+  gap: 0.6rem;
+  padding: 0.75rem 0.6rem;
+  border-radius: 5px;
   text-decoration: none;
-  color: #222;
-  overflow-wrap: anywhere;
+  color: #4b5563;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+
+.archive-post-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.15rem;
+  color: #64748b;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+.archive-post-day {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.archive-post-month {
+  margin-top: 0.15rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.archive-post-title {
+  min-width: 0;
+}
+
+.archive-tree summary:hover,
+.archive-tree a:hover {
+  background: #edf2fb;
+  color: #2858b8;
+  text-decoration: none;
+}
+
+.archive-tree a[aria-current="page"] {
+  background: #edf2fb;
+  color: #2858b8;
+  font-weight: 600;
+  box-shadow: inset 2px 0 #3366cc;
+}
+
+.archive-tree summary:focus-visible,
+.archive-tree a:focus-visible {
+  outline: 2px solid #3366cc;
+  outline-offset: 2px;
 }
 
 /* Theme container overrides */

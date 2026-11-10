@@ -5,20 +5,35 @@
     {% assign posts_by_year = visible_posts | group_by_exp: "post", "post.date | date: '%Y'" %}
     {% for year in posts_by_year %}
       <li>
-        <details {% if forloop.first %} open {% endif %}>
-          <summary>{{ year.name }} ({{ year.items | size }})</summary>
-          <ul>
+        <details class="archive-year" {% if forloop.first %} open {% endif %}>
+          <summary>
+            <span class="archive-label">{{ year.name }}</span>
+            <span class="archive-count">{{ year.items | size }}<span class="visually-hidden"> posts</span></span>
+          </summary>
+          <ul class="archive-months">
             {% assign posts_by_month = year.items | group_by_exp: "post", "post.date | date: '%B'" %}
             {% assign months_order = "December,November,October,September,August,July,June,May,April,March,February,January" | split: "," %}
             {% for month in months_order %}
               {% for month_group in posts_by_month %}
                 {% if month == month_group.name %}
                   <li>
-                    <details>
-                      <summary>{{ month }} ({{ month_group.items | size }})</summary>
-                      <ul>
+                    <details class="archive-month">
+                      <summary>
+                        <span class="archive-label">{{ month }}</span>
+                        <span class="archive-count">{{ month_group.items | size }}<span class="visually-hidden"> posts</span></span>
+                      </summary>
+                      <ul class="archive-posts">
                         {% for post in month_group.items %}
-                          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+                          <li>
+                            <a href="{{ post.url | relative_url }}"{% if page.url == post.url %} aria-current="page"{% endif %}>
+                              <time class="archive-post-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
+                                <span class="archive-post-day" aria-hidden="true">{{ post.date | date: '%d' }}</span>
+                                <span class="archive-post-month" aria-hidden="true">{{ post.date | date: '%b' }}</span>
+                                <span class="visually-hidden">{{ post.date | date: '%B %-d, %Y' }}: </span>
+                              </time>
+                              <span class="archive-post-title">{{ post.title | escape }}</span>
+                            </a>
+                          </li>
                         {% endfor %}
                       </ul>
                     </details>
